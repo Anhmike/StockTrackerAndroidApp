@@ -1,0 +1,62 @@
+USER STORIES
+
+As a shareholder, I want an estimate of my most & least valuable shares in whole
+pounds for the most recent full week (Mon-Fri). So that I can easily gauge the 
+range from highest to lowest share value.
+
+Complexity: 14 / Value: 100 / Priority: 7.14
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want information about the weekly high and low for each
+share so that I can assess the risk of each share investment.
+
+Complexity: 14 / Value: 150 / Priority: 10.71
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want to see the rise and fall in price of my share portfolio
+each day to see my overall share worth in whole pounds.
+
+Complexity: 14 / Value: 200 / Priority: 14.28
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want to know the total loss since opening on Monday of the
+current week till now. So that I can quickly tell if I have made or lost money,
+and how much.
+
+Complexity: 14 / Value: 300 / Priority: 21.43
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want to be alerted if at the end of any trading day the
+volume of trading has increased by 50% or more compared to the same day in the
+previous week so that I know how active and how much interest there is in stock 
+for that day.
+
+Complexity: 18 / Value: 400 / Priority: 22.2
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want to be alerted 15 minutes prior to the end of the 
+trading day when any of my shares rise by 10% or fall by 20% over the current
+trading day. So that I can react quickly to any large fluctuations in share 
+value.
+
+Complexity: 18 / Value: 500 / Priority: 27.8
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want an estimate of how much each set of shares is worth in
+whole pounds, ordered alphabetically so that I can view the values of my shares
+at a glance.
+
+Complexity: 14 / Value: 800 / Priority: 57.14
+
+--------------------------------------------------------------------------------
+
+As a shareholder, I want an estimate of how much my share portfolio is worth in
+total so that I can tell what my total investment worth is.
+
+Complexity: 14 / Value: 1000 / Priority: 71.42
