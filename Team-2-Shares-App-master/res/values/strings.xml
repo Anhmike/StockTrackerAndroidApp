@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">shares</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Shares</string>
+    <string name="title_activity_portfolio_total">Shares Portfolio Total</string>
+    <string name="title_activity_share_sets">Shares Portfolio Sets</string>
+    <string name="title_risefallactivity">Rise Fall</string>
+
+</resources>
