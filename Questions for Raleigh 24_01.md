@@ -1,4 +1,4 @@
-#Questions#
+#Questions and Answer#
 ---
  - Other user stories have been completed maybe...
 
@@ -15,4 +15,4 @@
 
  - Chose how she sees the updates - Change in prices over a week/month/year
 
-
+ - Notifications can be done when she opens the app rather than push (red and green screen etc)
