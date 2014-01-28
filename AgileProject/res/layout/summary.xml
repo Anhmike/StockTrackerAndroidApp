@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:id="@+id/summaryNameHeader"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="Name"></TextView>
+        <TextView
+            android:id="@+id/summarySharesHeader"
+            android:textStyle="bold"
+            android:text="Shares"
+            android:gravity="right"></TextView>
+        <TextView
+            android:id="@+id/summaryValueHeader"
+            android:textStyle="bold"
+            android:text="Value"
+            android:gravity="right"></TextView>
+        <TextView
+            android:id="@+id/summaryTotalHeader"
+            android:textStyle="bold"
+            android:text="Total"
+            android:gravity="right"></TextView>
+    </TableRow>
+ 
+</TableLayout>
