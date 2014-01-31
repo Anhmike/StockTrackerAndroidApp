@@ -1,0 +1,48 @@
+Marking Scheme
+
+Product Backlog		-	30%
+	- user stories
+		- values
+		- priorities
+		- complexity
+		- quality/style of user story
+		- conversation with Raleigh
+		
+	- developer stories
+		
+	- acceptance tests
+	
+	- Product backlog
+		- what is included/excluded from the sprint
+		
+Sprint Backlog		-	20%
+
+
+Scrum 				-	10%
+	- attendance
+	- focus
+	- participation
+	- questions
+	- real answers
+	- not too long (10 minutes max)
+	- no problem solving
+	- scrum master
+
+Sprint Review		-	40%
+	- organise a review
+		- arrange a room
+		- contact Raleigh
+	- demonstration of the product
+		- show added functionality
+	- everyone should be present
+	- link functionality with user story
+	- run all acceptance tests
+	- get feedback from Raleigh
+	- interaction with the customer
+	- user centred design
+		- show that you have consulted Raleigh throughout project
+	- show use of github with commits from everyone
+		- regular commits
+		- appropriately commented commits
+	- Code (10%)
+		- attempt test driven development
