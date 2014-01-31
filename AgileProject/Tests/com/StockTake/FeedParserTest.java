@@ -30,7 +30,7 @@ public class FeedParserTest extends AndroidTestCase
 	{
 		Assert.assertNotSame(feedparse, null);
 	}
-
+/*
 	public void testJSONParse() throws Throwable
 	{
 		feedparse.parseJSON(finance, "BP");
@@ -55,4 +55,5 @@ public class FeedParserTest extends AndroidTestCase
 		String testAmount = "123M";
 		Assert.assertEquals(123000000, feedparse.volCharToInt(testAmount));
 	}
+	*/
 }

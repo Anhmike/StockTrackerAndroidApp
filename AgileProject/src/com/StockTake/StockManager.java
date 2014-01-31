@@ -47,13 +47,12 @@ public class StockManager extends Application
 		stockNamesLong.clear();
 	}
 
-	public Finance createFinanceObject(String stockCode) throws IOException, JSONException
+	public Finance createFinanceObject(String stockCode) throws IOException
 	{
 
 		Finance newStock = new Finance();
-
-		newParse.parseJSON(newStock, stockCode);
-		newParse.getHistoric(newStock, stockCode);
+		
+		newParse.getFeed(newStock, stockCode);
 		newStock.calcRun();
 		newStock.calcRocketPlummet();
 
@@ -62,7 +61,7 @@ public class StockManager extends Application
 	}
 
 	public boolean addPortfolioEntry(String stockCode, String stockNameLong, int numberOfShares)
-			throws IOException, JSONException
+			throws IOException
 	{
 
 		float shareQuantity = (float) numberOfShares;

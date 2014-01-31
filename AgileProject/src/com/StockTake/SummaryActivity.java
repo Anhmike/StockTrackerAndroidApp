@@ -9,6 +9,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -30,12 +31,11 @@ public class SummaryActivity extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
 		// Get the StockManager
 		myStockmanager = ((StockManager)getApplicationContext());
 		
 		setContentView(R.layout.summary);
-
+		
 	    update();
 
 	}
@@ -75,7 +75,6 @@ public class SummaryActivity extends Activity
 	public void onClick() throws IOException, JSONException {
 	
 		myStockmanager.clearPortfolio();
-		myStockmanager.addPortfolioEntry("BLVN", "BowLeven Plc", 3960);
 		myStockmanager.addPortfolioEntry("BP", "BP Amoco Plc", 192);
 		myStockmanager.addPortfolioEntry("HSBA", "HSBC Holdings Plc Ord.", 343);
 		myStockmanager.addPortfolioEntry("EXPN", "Experian", 258);
