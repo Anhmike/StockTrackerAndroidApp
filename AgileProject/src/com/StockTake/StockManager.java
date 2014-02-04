@@ -72,7 +72,7 @@ public class StockManager extends Application
 		}
 		portfolio.put(stockObj, shareQuantity);
 		stockNames.add(stockObj.getName());
-		stockNamesLong.put(stockCode.substring(stockCode.indexOf(":") + 1), stockNameLong);
+		//stockNamesLong.put(stockCode.substring(stockCode.indexOf(":") + 1), stockNameLong);
 		return true;
 	}
 
@@ -143,8 +143,10 @@ public class StockManager extends Application
 			stockValueRounded = stockValueRounded.setScale(0, BigDecimal.ROUND_HALF_UP);
 			float subTotal = portfolio.get(stockObj) * thisStockValue;
 
-			String longName = stockNamesLong.get(stockObj.getName().toString());
-
+			//String longName = stockNamesLong.get(stockObj.getName().toString());
+			String longName = stockNames.get(stockCounter).toString();
+			Log.e("ShitHouse", longName);
+			
 			stockName[stockCounter].setText(longName);
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 			stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
