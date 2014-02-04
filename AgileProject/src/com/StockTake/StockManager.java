@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
-import org.json.JSONException;
 
 import android.app.Activity;
 import android.app.Application;
@@ -114,12 +118,15 @@ public class StockManager extends Application
 
 		TableRow rowTotal = new TableRow(contextActivity);
 		TextView portfolioTotal = new TextView(contextActivity);
-
+		
+		NavigableMap sortedMap = sortPortfolioByValue();
 		// Now sort...
-		Collections.sort(stockNames);
-		for (String currStockName : stockNames) // Sorted list of names
+		Iterator<?> it = sortedMap.entrySet().iterator();
+		while(it.hasNext())
 		{
-
+			Map.Entry pairs = (Map.Entry)it.next();
+			String currStockName = pairs.getValue().toString();
+			
 			Finance stockObj = null;
 			for (Finance thisObj : portfolio.keySet())
 			{
@@ -144,8 +151,6 @@ public class StockManager extends Application
 			float subTotal = portfolio.get(stockObj) * thisStockValue;
 
 			String longName = stockNamesLong.get(stockObj.getName().toString());
-			
-			Log.e("ShitHouse", longName);
 			
 			stockName[stockCounter].setText(longName);
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
@@ -194,6 +199,30 @@ public class StockManager extends Application
 		table.addView(rowTotal);
 
 	}
+	
+	public NavigableMap sortPortfolioByValue()
+	{
+		TreeMap<Float, String> portfolioValue = new TreeMap<Float, String>();
+		Finance currentStock = new Finance();
+		float stocksHeld;
+		float total;
+
+		Iterator it = portfolio.entrySet().iterator();
+		while(it.hasNext())
+		{
+			Map.Entry pairs = (Map.Entry)it.next();
+			currentStock = (Finance)pairs.getKey();
+			stocksHeld = (Float)pairs.getValue();
+			total = stocksHeld * currentStock.getLast();
+			
+			portfolioValue.put(total, currentStock.getName());
+		}
+		NavigableMap mapMap = portfolioValue.descendingMap();
+		
+		return mapMap;
+	}
+	
+	
 
 	public int volumeTable(Activity contextActivity)
 	{
