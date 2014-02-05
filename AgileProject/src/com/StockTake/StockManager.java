@@ -155,7 +155,8 @@ public class StockManager extends Application
 			
 			stockName[stockCounter].setText(longName);
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-			stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
+			//stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
+			stockName[stockCounter].setTextColor(Color.rgb(168, 232, 37));
 			stockName[stockCounter].setTextSize(24f);
 			stockName[stockCounter].setHeight(130);
 			stockName[stockCounter].setWidth(500);
@@ -173,7 +174,7 @@ public class StockManager extends Application
 			stockValue[stockCounter].setSingleLine(true);
 			*/
 
-			stockTotal[stockCounter].setText("£" + String.format("%,3.0f", subTotal));
+			stockTotal[stockCounter].setText("£  " + String.format("%,3.0f", subTotal));
 			stockTotal[stockCounter].setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 			stockTotal[stockCounter].setTextSize(24f);
 			stockTotal[stockCounter].setSingleLine(true);
@@ -189,7 +190,7 @@ public class StockManager extends Application
 
 		}
 
-		String totalVal = "Total Portfolio Value:     £" + String.format("%,.0f", getPortfolioTotal());
+		String totalVal = "Total Portfolio Value:     £  " + String.format("%,.0f", getPortfolioTotal());
 		portfolioTotal.setText(totalVal);
 		portfolioTotal.setTextSize(24f);
 		portfolioTotal.setHeight(100);
