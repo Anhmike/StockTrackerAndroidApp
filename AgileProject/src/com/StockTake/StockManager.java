@@ -150,16 +150,18 @@ public class StockManager extends Application
 			stockValueRounded = stockValueRounded.setScale(0, BigDecimal.ROUND_HALF_UP);
 			float subTotal = portfolio.get(stockObj) * thisStockValue;
 
-			String longName = stockNamesLong.get(stockObj.getName().toString());
+			//String longName = stockNamesLong.get(stockObj.getName().toString());
+			String longName = currStockName;
 			
 			stockName[stockCounter].setText(longName);
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 			stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
-			stockName[stockCounter].setTextSize(16f);
+			stockName[stockCounter].setTextSize(24f);
 			stockName[stockCounter].setHeight(130);
-			stockName[stockCounter].setWidth(200);
+			stockName[stockCounter].setWidth(500);
 			stockName[stockCounter].setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
 
+			/*
 			stockShares[stockCounter].setText(String.format("%,3.0f", portfolio.get(stockObj)));
 			stockShares[stockCounter].setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 			stockShares[stockCounter].setTextSize(20f);
@@ -169,15 +171,16 @@ public class StockManager extends Application
 			stockValue[stockCounter].setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 			stockValue[stockCounter].setTextSize(20f);
 			stockValue[stockCounter].setSingleLine(true);
+			*/
 
 			stockTotal[stockCounter].setText("£" + String.format("%,3.0f", subTotal));
 			stockTotal[stockCounter].setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-			stockTotal[stockCounter].setTextSize(20f);
+			stockTotal[stockCounter].setTextSize(24f);
 			stockTotal[stockCounter].setSingleLine(true);
 
 			rowStock[stockCounter].addView(stockName[stockCounter]);
-			rowStock[stockCounter].addView(stockShares[stockCounter]);
-			rowStock[stockCounter].addView(stockValue[stockCounter]);
+			//rowStock[stockCounter].addView(stockShares[stockCounter]);
+			//rowStock[stockCounter].addView(stockValue[stockCounter]);
 			rowStock[stockCounter].addView(stockTotal[stockCounter]);
 
 			table.addView(rowStock[stockCounter]);
@@ -188,7 +191,7 @@ public class StockManager extends Application
 
 		String totalVal = "Total Portfolio Value:     £" + String.format("%,.0f", getPortfolioTotal());
 		portfolioTotal.setText(totalVal);
-		portfolioTotal.setTextSize(20f);
+		portfolioTotal.setTextSize(24f);
 		portfolioTotal.setHeight(100);
 		portfolioTotal.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 

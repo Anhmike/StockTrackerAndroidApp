@@ -16,16 +16,6 @@
             android:textStyle="bold"
             android:text="Name"></TextView>
         <TextView
-            android:id="@+id/summarySharesHeader"
-            android:textStyle="bold"
-            android:text="Shares"
-            android:gravity="right"></TextView>
-        <TextView
-            android:id="@+id/summaryValueHeader"
-            android:textStyle="bold"
-            android:text="Value"
-            android:gravity="right"></TextView>
-        <TextView
             android:id="@+id/summaryTotalHeader"
             android:textStyle="bold"
             android:text="Total"
