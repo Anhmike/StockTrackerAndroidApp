@@ -33,7 +33,7 @@ public class FeedParser
 			
 		}
 		
-		toPopulate.setClose((Float.parseFloat(csvData[0])/10f));
+		toPopulate.setClose((Float.parseFloat(csvData[0])/100f));
 		Log.v("his close", "1 : " + csvData[0]);
 		toPopulate.setVolume(Integer.parseInt(csvData[1]));
 		Log.v("his volume", "2 : " + csvData[1]);
@@ -50,8 +50,8 @@ public class FeedParser
 			Log.e("oh oh", e.toString());
 		}
 		
-		toPopulate.setLast((Float.parseFloat(csvData[1]) / 10f));
-		Log.v("price", "3 : " + (Float.parseFloat(csvData[1]) / 10f));
+		toPopulate.setLast((Float.parseFloat(csvData[1]) / 100f));
+		Log.v("price", "3 : " + (Float.parseFloat(csvData[1]) / 100f));
 		toPopulate.setName(csvData[0]);
 		Log.v("name", "4 : " + csvData[0]);
 		//toPopulate.setMarket("NASDAQ");
@@ -175,44 +175,5 @@ public class FeedParser
 		return csvdata;
 			
 	}
-/*
-	public void parseJSON(Finance toPopulate, String currentStock) throws IOException, JSONException
-	{
-		// Create JSON and Finance objects
-		JSONObject jObject;
-
-
-		// Generate URL
-		URL feedUrl = new URL("http://finance.google.com/finance/info?client=ig&infotype=infoquoteall&q=LON:" + currentStock);
-		// Read JSON
-		InputStream is = feedUrl.openStream();
-		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-		StringBuilder sb = new StringBuilder();
-		int cp;
-		while ((cp = rd.read()) != -1)
-		{
-			sb.append((char) cp);
-		}
-		String jsonText = sb.toString();
-		jsonText = jsonText.substring(5, jsonText.length() - 2);
-		is.close();
-		// Init object
-		jObject = new JSONObject(jsonText);
-		// Set 'Last' value
-		toPopulate.setLast(Float.parseFloat(jObject.getString("l")) / 100f);
-		//Log.v("LOGCATZ", " " + toPopulate.getLast());
-		// Set 'Company' name
-		toPopulate.setName(jObject.getString("t"));
-		// Set 'Market'
-		toPopulate.setMarket(jObject.getString("e"));
-		// Set 'Instant Volume'
-		int instantVolume = volCharToInt(jObject.getString("vo"));
-		toPopulate.setInstantVolume(instantVolume);
-		
-	
-
-
-	}
-	*/
 	
 }

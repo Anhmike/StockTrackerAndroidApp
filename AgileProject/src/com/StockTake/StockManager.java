@@ -156,7 +156,7 @@ public class StockManager extends Application
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 			stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
 			stockName[stockCounter].setTextSize(16f);
-			stockName[stockCounter].setHeight(70);
+			stockName[stockCounter].setHeight(130);
 			stockName[stockCounter].setWidth(200);
 			stockName[stockCounter].setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
 
