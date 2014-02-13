@@ -1,0 +1,64 @@
+USER STORIES,COMPLEXITIES & ACCEPTANCE TESTS
+
+User Story: As a developer, I want to debug the existing code so that the previous user stories are completed.
+
+Complexity: 1 / Value: 1000 / Priority: 1000
+
+Acceptance Tests:
+- Verify that all previous completed user stories are working.
+- Code should compile and open in andriod 4.4 emulator.
+- Share information should be visible on screen.
+
+NOTE: included into the first sprint.
+
+--------------------------------------------------------------------------------
+
+User Story: As a shareholder, I want to be able to view my shares by overall value, so that I can easily see where shares rank.
+
+Complexity: 4 / Value: 600 / Priority: 200
+
+Acceptance Tests:
+- Verify that the shares are sorted by overall value meaning the highest value will be at the top of the list.
+
+NOTE: included into the first sprint.
+
+--------------------------------------------------------------------------------
+
+User Story: As a shareholder, I want a way of choosing how I see my updates, so that the software suits me.
+
+Complexity: 2 / Value: 300 / Priority: 150
+
+Acceptance Tests:
+- Verify that three of the shares can be viewed as a graph in weekly, monthly and yearly intervals. The user can change
+  between each view with a button click.
+
+NOTE: excluded from the first sprint
+
+--------------------------------------------------------------------------------
+
+User Story: As a shareholder, I want to be able to set my own values for alerts. So that I can easily customize my share
+            portfolio decisions.
+
+Complexity: 7 / Value: 400 / Priority: 57
+
+Acceptance Tests:
+- Feed test data to see that alerts do trigger when correct data is input.
+- Verify that the client can set thir own alert for share, acknowledged by a message.
+
+NOTE: excluded from the first sprint.
+
+--------------------------------------------------------------------------------
+
+User Story: As a shareholder, I want estimares of the worth of my shares as they happen. So that I get up-to-date information
+	    on my shares easily.
+
+Complexity: 2 / Value: 100 / Priority: 50
+
+Acceptance Tests:
+- Verfiy that the share prices are correct with 15 minutes of stock market changes by comparing prices of all of the shares with
+  yahoo's finance web-page.
+
+NOTE: excluded from the first sprint.
+
+--------------------------------------------------------------------------------
+
