@@ -1,0 +1,27 @@
+what we like
+-----------------------------------------------------
+- worked well as a group 
+- communication in the group
+- good mix of skills
+- raleigh meetings
+
+
+what we didnt like
+------------------------------------------------------
+- not everyone was at the sprint meetings
+- early mornings (50/50)
+- time management
+- emulator / lack of android devices
+- more scrums
+- more pair programming
+
+
+start doing
+------------------------------------------------------
+- research to-do stuff
+- team formations - pair programming at shiz
+- organise sprint backlog 
+- find out what everyone likes doing
+- be more productive 
+- look at acceptance tests for previous teams
+- aim to have a scrum each working day
