@@ -49,9 +49,11 @@ Notes:
 
 -----------------------------------------------------------------------------------------------------------
 
-Date: tbc  Time: tbc
+Date: 20/02/2014  Time: 11:30
 Agenda: Discuss the product backlog and changes that the client makes ready for sprint 2.
-Notes: tbc
+Notes:
+	- value/time graph
+	- two buttons (drop down) choice of share/time scale (weeks/months/years)
 
 -----------------------------------------------------------------------------------------------------------
 
