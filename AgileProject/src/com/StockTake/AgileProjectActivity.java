@@ -48,6 +48,15 @@ public class AgileProjectActivity extends TabActivity {
 	                      res.getDrawable(R.drawable.ic_tab_alerts))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
+	    
+		 // Create an Intent to launch an Activity for the tab (to be reused)
+	    intent = new Intent().setClass(this, GraphsActivity.class);
+	    
+	    // Initialize a TabSpec for each tab and add it to the TabHost
+	    spec = tabHost.newTabSpec("Graphs").setIndicator("Graphs",
+	                      res.getDrawable(R.drawable.ic_tab_alerts))
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
 
 
 	    tabHost.setCurrentTab(0);

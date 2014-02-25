@@ -18,14 +18,14 @@ import android.util.Log;
 public class FeedParser
 {
 	
-	public void getFeed(Finance toPopulate, String currentStock)
+	public void getFeed(Finance toPopulate, String currentStock, int day, int month, int year)
 	{
 		BufferedReader reader;
 		String csvData[] = null;
 				
 		try 
 		{
-			reader = getCsvHistoric(currentStock);
+			reader = getCsvHistoric(currentStock, day, month, year);
 			csvData = parseCsvString(reader);
 		}
 		catch (IOException e) 
@@ -59,19 +59,14 @@ public class FeedParser
 		Log.v("volume", "5 : " + csvData[2]);
 	}
 	
-	public BufferedReader getCsvHistoric(String stockSymbol)
-	{
-		// Check dates
-		Calendar cal = Calendar.getInstance();
-		int day = cal.get(Calendar.DAY_OF_MONTH) - 4;	//sets starting date to 4 days ago
-		int month = cal.get(Calendar.MONTH);
-		
+	public BufferedReader getCsvHistoric(String stockSymbol, int day, int month, int year)
+	{	
 		// Generate URL
 		URL feedUrl = null;
 		InputStream  is = null;
 		try
 		{
-			feedUrl = new URL("http://ichart.finance.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=2014");
+			feedUrl = new URL("http://ichart.finance.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=" + year);
 		}
 		catch (IOException e)
 		{
