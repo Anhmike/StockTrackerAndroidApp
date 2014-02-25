@@ -86,6 +86,7 @@ public class FeedParser
 		try
 		{
 			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=" + year);
+			Log.v("nowork", "1P : " + feedUrl);
 		}
 		catch (IOException e)
 		{
