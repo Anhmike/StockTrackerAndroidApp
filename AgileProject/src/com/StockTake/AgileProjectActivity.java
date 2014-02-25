@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
 
+@SuppressWarnings("deprecation")
 public class AgileProjectActivity extends TabActivity {
 	
 	StockManager myStockmanager = new StockManager();
