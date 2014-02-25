@@ -10,6 +10,8 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -68,7 +70,17 @@ public class GraphActivity extends Activity {
 			errorRow.addView(error1, params);
 			table.addView(errorRow);
 		}
-		getData();
+		String stockName = "SN";
+		//getData(stockName);
+		
+		Spinner spinner = (Spinner) findViewById(R.id.stock_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+		R.array.stock_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
 	}
 
 	private boolean checkInternetConnection() {
@@ -84,13 +96,12 @@ public class GraphActivity extends Activity {
 
 	}
 
-	public void getData()
+	public void getData(String stockname)
 	{
-		String stockname = "SN";
 		LinkedList<Float> HistoricList = new LinkedList<Float>();
 		FeedParser HistoricData = new FeedParser();
 		HistoricList = HistoricData.getHistoricFeed(stockname);
-
+		
 		for(int i = 0; i < HistoricList.size(); i++) {
 			Log.v("name", "4 : " + HistoricList.get(i));
 		}

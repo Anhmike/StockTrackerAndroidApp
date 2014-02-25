@@ -1,0 +1,11 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string-array name="stock_array">
+        <item>SN</item>
+        <item>BP</item>
+        <item>HSBA</item>
+        <item>EXPN</item>
+        <item>MKS</item>
+    </string-array>
+
+</resources>
