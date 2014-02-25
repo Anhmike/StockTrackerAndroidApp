@@ -1,6 +1,7 @@
 package com.StockTake;
 
 import java.io.BufferedReader;
+import java.util.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -46,29 +47,26 @@ public class FeedParser
 		Log.v("volume", "5 : " + csvData[2]);
 	}
 	
-	public String[] getHistoricFeed(String currentStock)
+	public LinkedList<Float> getHistoricFeed(String currentStock)
 	{
 		BufferedReader reader;
-		String csvHistoricData[] = null;
+		LinkedList<Float> csvHistoricList = new LinkedList<Float>();
 		
 		try 
 		{
 			reader = getCsvHistoric(currentStock);
-			csvHistoricData = parseCsvString(reader);
+			csvHistoricList = parseCsvString(reader);
 		}
 		catch (IOException e) 
 		{
 		}
 		
-		Log.v("hamish", "1P : " + csvHistoricData[0]);
-		Log.v("hamish", "1P : " + csvHistoricData[1]);
-		
 		//toPopulate.setClose((Float.parseFloat(csvHistoricData[0])/100f));
-		for(int i = 0; i < csvHistoricData.length; i++){
-		Log.v("hamish", "1P : " + csvHistoricData[i]);
+		for(int i = 0; i < csvHistoricList.size(); i++){
+			Log.v("shithouse", "5 : " + csvHistoricList.get(i));
 		}	
 		
-		return csvHistoricData;
+		return csvHistoricList;
 	}
 	
 	public BufferedReader getCsvHistoric(String stockSymbol)
@@ -104,12 +102,12 @@ public class FeedParser
 		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));	
 	}
 	
-	private String[] parseCsvString(BufferedReader csvToParse) throws IOException  
+	private LinkedList<Float> parseCsvString(BufferedReader csvToParse) throws IOException  
 	{
 		String strLine = "";
 		StringTokenizer st = null;
 		int lineNumber = 0, tokenNumber = 0;
-		String csvdata[] = new String[365];
+		LinkedList<Float> historicList = new LinkedList<Float>();
 		while( ((strLine = csvToParse.readLine()) != null))
 		{
 			lineNumber++;
@@ -124,14 +122,14 @@ public class FeedParser
 					tokenNumber++;
 					token = st.nextToken();
 					if (tokenNumber == 5) {
-						csvdata[lineNumber] = token;
+						historicList.addLast(Float.parseFloat(token));
 						Log.v("shit", "4:" + token);
 					}
 				}
 				tokenNumber = 0;
 			}
 		}
-		return csvdata;
+		return historicList;
 	}
 	
 	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException

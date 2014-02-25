@@ -1,7 +1,7 @@
 package com.StockTake;
 
 import java.io.IOException;
-
+import java.util.*;
 import org.json.JSONException;
 
 import android.app.Activity;
@@ -68,7 +68,7 @@ public class GraphActivity extends Activity {
 			errorRow.addView(error1, params);
 			table.addView(errorRow);
 		}
-
+		getData();
 	}
 
 	private boolean checkInternetConnection() {
@@ -87,12 +87,12 @@ public class GraphActivity extends Activity {
 	public void getData()
 	{
 		String stockname = "SN";
-		String [] historic;
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
 		FeedParser HistoricData = new FeedParser();
-		historic = HistoricData.getHistoricFeed(stockname);
+		HistoricList = HistoricData.getHistoricFeed(stockname);
 
-		for(int i = 0; i < historic.length; i++) {
-			Log.v("booyah", "4 : " + historic[i]);
+		for(int i = 0; i < HistoricList.size(); i++) {
+			Log.v("name", "4 : " + HistoricList.get(i));
 		}
 	}
 
