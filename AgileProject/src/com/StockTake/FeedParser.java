@@ -18,25 +18,12 @@ import android.util.Log;
 public class FeedParser
 {
 	
-	public void getFeed(Finance toPopulate, String currentStock, int day, int month, int year)
+	public void getFeed(Finance toPopulate, String currentStock)
 	{
 		BufferedReader reader;
 		String csvData[] = null;
-				
-		try 
-		{
-			reader = getCsvHistoric(currentStock, day, month, year);
-			csvData = parseCsvString(reader);
-		}
-		catch (IOException e) 
-		{
-			
-		}
+		//toPopulate.setVolume(Integer.parseInt(csvHistoricData[1]));
 		
-		toPopulate.setClose((Float.parseFloat(csvData[0])/100f));
-		Log.v("his close", "1 : " + csvData[0]);
-		toPopulate.setVolume(Integer.parseInt(csvData[1]));
-		Log.v("his volume", "2 : " + csvData[1]);
 		reader = null;
 		csvData = null;
 		
@@ -59,14 +46,46 @@ public class FeedParser
 		Log.v("volume", "5 : " + csvData[2]);
 	}
 	
-	public BufferedReader getCsvHistoric(String stockSymbol, int day, int month, int year)
+	public String[] getHistoricFeed(String currentStock)
+	{
+		BufferedReader reader;
+		String csvHistoricData[] = null;
+		
+		try 
+		{
+			reader = getCsvHistoric(currentStock);
+			csvHistoricData = parseCsvString(reader);
+		}
+		catch (IOException e) 
+		{
+		}
+		
+		Log.v("hamish", "1P : " + csvHistoricData[0]);
+		Log.v("hamish", "1P : " + csvHistoricData[1]);
+		
+		//toPopulate.setClose((Float.parseFloat(csvHistoricData[0])/100f));
+		for(int i = 0; i < csvHistoricData.length; i++){
+		Log.v("hamish", "1P : " + csvHistoricData[i]);
+		}	
+		
+		return csvHistoricData;
+	}
+	
+	public BufferedReader getCsvHistoric(String stockSymbol)
 	{	
 		// Generate URL
 		URL feedUrl = null;
 		InputStream  is = null;
+		
+		Calendar cal = Calendar.getInstance();
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int month = cal.get(Calendar.MONTH);
+		int year = cal.get(Calendar.YEAR) - 1;
+		
+		
 		try
 		{
-			feedUrl = new URL("http://ichart.finance.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=" + year);
+			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=" + year);
 		}
 		catch (IOException e)
 		{
@@ -89,12 +108,12 @@ public class FeedParser
 		String strLine = "";
 		StringTokenizer st = null;
 		int lineNumber = 0, tokenNumber = 0;
-		String csvdata[] = new String[2];
-		while( ((strLine = csvToParse.readLine()) != null) && lineNumber < 2)
+		String csvdata[] = new String[365];
+		while( ((strLine = csvToParse.readLine()) != null))
 		{
 			lineNumber++;
-			
-			if (lineNumber == 2) {
+			Log.v("mark", "5 : " + lineNumber);
+			if (lineNumber != 1) {
 
 				st = new StringTokenizer(strLine, ",");
 				String token;
@@ -104,19 +123,14 @@ public class FeedParser
 					tokenNumber++;
 					token = st.nextToken();
 					if (tokenNumber == 5) {
-						csvdata[0] = token;
-					}
-					
-					if (tokenNumber == 6) {
-						csvdata[1] = token;
+						csvdata[lineNumber] = token;
+						Log.v("shit", "4:" + token);
 					}
 				}
 				tokenNumber = 0;
 			}
 		}
-		
 		return csvdata;
-			
 	}
 	
 	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException
