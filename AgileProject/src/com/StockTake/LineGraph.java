@@ -26,7 +26,7 @@ public class LineGraph extends Activity
         setContentView(R.layout.graph);
 
         // initialize our XYPlot reference:
-        plot = (XYPlot) findViewById(R.id.graph);
+        //plot = (XYPlot) findViewById(R.id.graph);
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -38,11 +38,11 @@ public class LineGraph extends Activity
         // and configure it from xml:
         LineAndPointFormatter series1Format = new LineAndPointFormatter();
         series1Format.setPointLabelFormatter(new PointLabelFormatter());
-        series1Format.configure(getApplicationContext(),
-                R.xml.line_point_formatter_with_plf1);
+        //series1Format.configure(getApplicationContext(),
+               // R.xml.line_point_formatter_with_plf1);
 
         // add a new series' to the xyplot:
-        plot.addSeries(series1, series1Format);
+        //plot.addSeries(series1, series1Format);
 
 
         // reduce the number of range labels
