@@ -54,7 +54,7 @@ public class AgileProjectActivity extends TabActivity {
 	    
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("Graphs").setIndicator("Graphs",
-	                      res.getDrawable(R.drawable.ic_tab_alerts))
+	                      res.getDrawable(R.drawable.ic_tab_graph))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
