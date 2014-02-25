@@ -55,8 +55,11 @@ public class StockManager extends Application
 	{
 
 		Finance newStock = new Finance();
+		int day = 1;
+		int month = 1;
+		int year = 2014;
 		
-		newParse.getFeed(newStock, stockCode);
+		newParse.getFeed(newStock, stockCode, day, month, year);
 		newStock.calcRun();
 		newStock.calcRocketPlummet();
 
