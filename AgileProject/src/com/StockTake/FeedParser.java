@@ -54,7 +54,7 @@ public class FeedParser
 		Log.v("price", "3 : " + (Float.parseFloat(csvData[1]) / 100f));
 		toPopulate.setName(currentStock);
 		Log.v("name", "4 : " + currentStock);
-		//toPopulate.setMarket("NASDAQ");
+		//toPopulate.setMarket("LDN");
 		toPopulate.setInstantVolume(Integer.parseInt(csvData[2]));
 		Log.v("volume", "5 : " + csvData[2]);
 	}
