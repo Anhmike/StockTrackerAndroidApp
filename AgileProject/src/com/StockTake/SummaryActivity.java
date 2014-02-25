@@ -37,6 +37,7 @@ public class SummaryActivity extends Activity
 		setContentView(R.layout.summary);
 		
 	    update();
+	    getData();
 
 	}
 
@@ -68,6 +69,17 @@ public class SummaryActivity extends Activity
 			error1.setText(Html.fromHtml(" <big>Oops!</big><br/><br/> It seems there is a problem with your internet connection."));
 			errorRow.addView(error1, params);
             table.addView(errorRow);
+		}
+	}
+	public void getData()
+	{
+		String stockname = "SN";
+		String [] historic;
+		FeedParser HistoricData = new FeedParser();
+		historic = HistoricData.getHistoricFeed(stockname);
+		
+		for(int i = 0; i < historic.length; i++) {
+			Log.v("booyah", "4 : " + historic[i]);
 		}
 	}
 
