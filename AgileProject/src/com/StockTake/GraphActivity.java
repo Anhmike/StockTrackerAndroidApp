@@ -14,7 +14,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class GraphsActivity extends Activity {
+public class GraphActivity extends Activity {
 
 StockManager myStockmanager;
 
