@@ -52,8 +52,8 @@ public class FeedParser
 		
 		toPopulate.setLast((Float.parseFloat(csvData[1]) / 100f));
 		Log.v("price", "3 : " + (Float.parseFloat(csvData[1]) / 100f));
-		toPopulate.setName(csvData[0]);
-		Log.v("name", "4 : " + csvData[0]);
+		toPopulate.setName(currentStock);
+		Log.v("name", "4 : " + currentStock);
 		//toPopulate.setMarket("NASDAQ");
 		toPopulate.setInstantVolume(Integer.parseInt(csvData[2]));
 		Log.v("volume", "5 : " + csvData[2]);
@@ -128,7 +128,7 @@ public class FeedParser
 	{
 		Log.w("oh oh", "Getting real time");
 		// Generate URL
-		URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + ".L&f=nb2va");
+		URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + ".L&f=nb2b3va");
 		
 		InputStream is = feedUrl.openStream();
 		
@@ -153,6 +153,8 @@ public class FeedParser
 		strLine = strLine.replace("\"", "");
 		st = new StringTokenizer(strLine, ",");
 		String token;
+		float ask = 0f;
+		float bid = 0f;
 				
 		while(st.hasMoreTokens())
 		{
@@ -162,11 +164,16 @@ public class FeedParser
 			{
 				csvdata[0] = token; //name in first field
 			}		
-			if (tokenNumber == 1)
+			if(tokenNumber == 1)
 			{
-				csvdata[1] = token; //price in second field
+				ask = Float.parseFloat(token);
 			}
 			if (tokenNumber == 2)
+			{
+				bid = Float.parseFloat(token);
+				csvdata[1] = Float.toString((ask+bid)/2); //price in second field
+			}
+			if (tokenNumber == 3)
 			{
 				csvdata[2] = token; //volume in third field
 			}

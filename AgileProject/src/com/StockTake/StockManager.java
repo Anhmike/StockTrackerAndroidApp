@@ -74,6 +74,7 @@ public class StockManager extends Application
 		{
 			return false;
 		}
+		stockObj.setName(stockNameLong);
 		portfolio.put(stockObj, shareQuantity);
 		stockNames.add(stockObj.getName());
 		stockNamesLong.put(stockObj.getName(), stockNameLong);
@@ -156,7 +157,6 @@ public class StockManager extends Application
 			stockName[stockCounter].setText(longName);
 			stockName[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 			//stockName[stockCounter].setTextColor(Color.rgb(58, 128, 255));
-			stockName[stockCounter].setTextColor(Color.rgb(168, 232, 37));
 			stockName[stockCounter].setTextSize(24f);
 			stockName[stockCounter].setHeight(130);
 			stockName[stockCounter].setWidth(500);
@@ -190,10 +190,11 @@ public class StockManager extends Application
 
 		}
 
-		String totalVal = "Total Portfolio Value:     £  " + String.format("%,.0f", getPortfolioTotal());
+		String totalVal = "Total Value:     £  " + String.format("%,.0f", getPortfolioTotal());
 		portfolioTotal.setText(totalVal);
-		portfolioTotal.setTextSize(24f);
+		portfolioTotal.setTextSize(28f);
 		portfolioTotal.setHeight(100);
+		portfolioTotal.setTextColor(Color.rgb(168, 232, 37));
 		portfolioTotal.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
 
 		TableRow.LayoutParams params = new TableRow.LayoutParams();
