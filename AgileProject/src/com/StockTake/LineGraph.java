@@ -1,9 +1,9 @@
 package com.StockTake;
+
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.WindowManager;
-import com.androidplot.xy.SimpleXYSeries;
-import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.*;
 import java.util.Arrays;
 
@@ -26,7 +26,7 @@ public class LineGraph extends Activity
         setContentView(R.layout.graph);
 
         // initialize our XYPlot reference:
-        //plot = (XYPlot) findViewById(R.id.graph);
+        //plot = (XYPlot) findViewById(R.id.simplexyplot);
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(

@@ -47,14 +47,14 @@ public class FeedParser
 		Log.v("volume", "5 : " + csvData[2]);
 	}
 	
-	public LinkedList<Float> getHistoricFeed(String currentStock)
+	public LinkedList<Float> getHistoricFeed(String currentStock, String time)
 	{
 		BufferedReader reader;
 		LinkedList<Float> csvHistoricList = new LinkedList<Float>();
 		
 		try 
 		{
-			reader = getCsvHistoric(currentStock);
+			reader = getCsvHistoric(currentStock, time);
 			csvHistoricList = parseCsvString(reader);
 		}
 		catch (IOException e) 
@@ -69,16 +69,37 @@ public class FeedParser
 		return csvHistoricList;
 	}
 	
-	public BufferedReader getCsvHistoric(String stockSymbol)
+	public BufferedReader getCsvHistoric(String stockSymbol, String timeFrame)
 	{	
 		// Generate URL
 		URL feedUrl = null;
 		InputStream  is = null;
 		
 		Calendar cal = Calendar.getInstance();
-		int day = cal.get(Calendar.DAY_OF_MONTH);
-		int month = cal.get(Calendar.MONTH);
-		int year = cal.get(Calendar.YEAR) - 1;
+		int day = 0, month = 0, year = 0;
+		
+		
+		if(timeFrame.equals("Weekly"))
+		{
+			 day = cal.get(Calendar.DAY_OF_MONTH) - 7;
+			 month = cal.get(Calendar.MONTH);
+			 year = cal.get(Calendar.YEAR);
+			
+		}
+		else if (timeFrame.equals("Monthly"))
+		{
+			 day = cal.get(Calendar.DAY_OF_MONTH);
+			 month = cal.get(Calendar.MONTH) - 30;
+			 year = cal.get(Calendar.YEAR);
+			
+		}
+		else if (timeFrame.equals("Yearly"))
+		{
+			 day = cal.get(Calendar.DAY_OF_MONTH);
+			 month = cal.get(Calendar.MONTH);
+			 year = cal.get(Calendar.YEAR) - 1;
+			
+		}
 		
 		
 		try
