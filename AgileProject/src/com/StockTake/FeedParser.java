@@ -89,7 +89,7 @@ public class FeedParser
 		else if (timeFrame.equals("Monthly"))
 		{
 			 day = cal.get(Calendar.DAY_OF_MONTH);
-			 month = cal.get(Calendar.MONTH) - 30;
+			 month = cal.get(Calendar.MONTH)-1;
 			 year = cal.get(Calendar.YEAR);
 			
 		}
