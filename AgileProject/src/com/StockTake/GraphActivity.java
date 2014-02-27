@@ -2,10 +2,18 @@ package com.StockTake;
 
 import java.io.IOException;
 import java.util.*;
+
 import org.json.JSONException;
+
+import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.PointLabelFormatter;
+import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XYPlot;
+import com.androidplot.xy.XYSeries;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Html;
@@ -28,6 +36,7 @@ public class GraphActivity extends Activity {
 	private Button btnSubmit;
 	private Spinner spinner2;
 	Bundle stateForGraph;
+	private XYPlot plot;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -187,11 +196,43 @@ public class GraphActivity extends Activity {
 			Log.v("booyah", "4 : " + HistoricList.get(i));
 		}
 		
-		LineGraph graphData = new LineGraph();
+		//LineGraph graphData = new LineGraph();
 		
 		Number[] array = HistoricList.toArray(new Number[HistoricList.size()]);
 		
-		graphData.onCreate(stateForGraph, array);
+		//graphData.onDisplay(stateForGraph, array);
+		
+		// initialize our XYPlot reference:
+        plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
+        
+        // Turn the above arrays into XYSeries':
+        XYSeries series1 = new SimpleXYSeries(
+                Arrays.asList(array),          // SimpleXYSeries takes a List so turn our array into a List
+                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
+                "Series1");                             // Set the display title of the series
+
+        // Create a formatter to use for drawing a series using LineAndPointRenderer
+        // and configure it from xml:
+        //LineAndPointFormatter series1Format = new LineAndPointFormatter();
+        //series1Format.setPointLabelFormatter(new PointLabelFormatter());
+        //series1Format.configure(getApplicationContext(),
+               //R.xml.line_point_formatter_with_plf1);
+
+        LineAndPointFormatter series1Format = new LineAndPointFormatter(
+        		Color.rgb(0, 200, 0),
+        		Color.rgb(0, 100, 0),
+        		null,
+        		new PointLabelFormatter(Color.WHITE));
+        
+        // add a new series' to the xyplot:
+        plot.addSeries(series1, series1Format);
+
+
+        // reduce the number of range labels
+        plot.setTicksPerRangeLabel(3);
+        plot.getGraphWidget().setDomainLabelOrientation(-45);
+        plot.redraw();
+
 	}
 
 

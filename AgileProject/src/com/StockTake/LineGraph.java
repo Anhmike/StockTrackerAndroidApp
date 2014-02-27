@@ -16,15 +16,15 @@ public class LineGraph extends Activity
 
     private XYPlot plot;
 
-    public void onCreate(Bundle savedInstanceState, Number[] stockValues)
+    public void onDisplay(Bundle savedInstanceState, Number[] stockValues)
     {
-        super.onCreate(savedInstanceState);
+        //super.onCreate(savedInstanceState);
 
         // fun little snippet that prevents users from taking screenshots
         // on ICS+ devices :-)
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                                 WindowManager.LayoutParams.FLAG_SECURE);
-        setContentView(R.layout.graph);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+ //                                WindowManager.LayoutParams.FLAG_SECURE);
+        //setContentView(R.layout.graph);
 
         // initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
