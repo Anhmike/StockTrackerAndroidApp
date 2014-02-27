@@ -171,9 +171,12 @@ public class GraphActivity extends Activity {
                 			stockAb = "BP";
                 		}
                 		
-                		getData(stockname, time, stockAb);             		
+                		getData(stockname, time, stockAb);
+                		
             }
+ 
         });
+ 
     }
 
 
@@ -216,6 +219,8 @@ public class GraphActivity extends Activity {
         plot.setTitle(graph_title);
         plot.setDomainLabel("Time Period: " + time); //X-axis label
         plot.setRangeLabel("Share Value"); //Y-axis label
+        plot.canScrollHorizontally(1);
+        //plot.getGraphWidget().getDomainLabelPaint().setTextSize(20);
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -231,6 +236,7 @@ public class GraphActivity extends Activity {
         
         // add a new series' to the xyplot:
         plot.addSeries(series1, series1Format);
+
 
         //Domain = X-axis || Range = Y-axis
         plot.setTicksPerRangeLabel(1);

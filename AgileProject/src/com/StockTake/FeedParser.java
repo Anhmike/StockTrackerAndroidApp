@@ -143,7 +143,7 @@ public class FeedParser
 					tokenNumber++;
 					token = st.nextToken();
 					if (tokenNumber == 5) {
-						historicList.addLast(Float.parseFloat(token));
+						historicList.addFirst(Float.parseFloat(token));
 						Log.v("shit", "4:" + token);
 					}
 				}
