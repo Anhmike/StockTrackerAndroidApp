@@ -1,20 +1,14 @@
 package com.StockTake;
 
 import java.io.BufferedReader;
-import java.util.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.util.Log;
 
 public class FeedParser
 {
@@ -23,7 +17,6 @@ public class FeedParser
 	{
 		BufferedReader reader;
 		String csvData[] = null;
-		//toPopulate.setVolume(Integer.parseInt(csvHistoricData[1]));
 		
 		reader = null;
 		csvData = null;
@@ -33,18 +26,11 @@ public class FeedParser
 			reader = getCsvRealtime(currentStock);
 			csvData = parseCsvRealtime(reader);
 		}
-		catch (IOException e)
-		{
-			Log.e("oh oh", e.toString());
-		}
+		catch (IOException e){}
 		
 		toPopulate.setLast((Float.parseFloat(csvData[1]) / 100f));
-		Log.v("price", "3 : " + (Float.parseFloat(csvData[1]) / 100f));
 		toPopulate.setName(currentStock);
-		Log.v("name", "4 : " + currentStock);
-		//toPopulate.setMarket("LDN");
 		toPopulate.setInstantVolume(Integer.parseInt(csvData[2]));
-		Log.v("volume", "5 : " + csvData[2]);
 	}
 	
 	public LinkedList<Float> getHistoricFeed(String currentStock, String time)
@@ -60,12 +46,6 @@ public class FeedParser
 		catch (IOException e) 
 		{
 		}
-		
-		//toPopulate.setClose((Float.parseFloat(csvHistoricData[0])/100f));
-		for(int i = 0; i < csvHistoricList.size(); i++){
-			Log.v("shithouse", "5 : " + csvHistoricList.get(i));
-		}	
-		
 		return csvHistoricList;
 	}
 	
@@ -105,11 +85,9 @@ public class FeedParser
 		try
 		{
 			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s=" + stockSymbol + ".L&a=" + month + "&b=" + day + "&c=" + year);
-			Log.v("nowork", "1P : " + feedUrl);
 		}
 		catch (IOException e)
 		{
-			Log.w("oh oh", e.toString());
 		}
 		try
 		{
@@ -117,7 +95,6 @@ public class FeedParser
 		}
 		catch (IOException e)
 		{
-			Log.w("oh oh", e.toString() );
 		}
 		
 		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));	
@@ -132,7 +109,6 @@ public class FeedParser
 		while( ((strLine = csvToParse.readLine()) != null))
 		{
 			lineNumber++;
-			Log.v("mark", "5 : " + lineNumber);
 			if (lineNumber != 1) {
 
 				st = new StringTokenizer(strLine, ",");
@@ -144,7 +120,6 @@ public class FeedParser
 					token = st.nextToken();
 					if (tokenNumber == 5) {
 						historicList.addFirst(Float.parseFloat(token));
-						Log.v("shit", "4:" + token);
 					}
 				}
 				tokenNumber = 0;
@@ -155,7 +130,6 @@ public class FeedParser
 	
 	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException
 	{
-		Log.w("oh oh", "Getting real time");
 		// Generate URL
 		URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + ".L&f=nb2b3va");
 		
@@ -177,7 +151,6 @@ public class FeedParser
 		}
 		catch(IOException e)
 		{
-			Log.e("oh oh", e.toString());
 		}
 		strLine = strLine.replace("\"", "");
 		st = new StringTokenizer(strLine, ",");

@@ -5,6 +5,7 @@ import java.util.*;
 
 import org.json.JSONException;
 
+import com.androidplot.ui.widget.TextLabelWidget;
 import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.PointLabelFormatter;
