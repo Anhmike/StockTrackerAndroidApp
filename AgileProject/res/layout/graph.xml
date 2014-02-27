@@ -27,7 +27,7 @@
     	android:layout_height="300dp"
     	android:layout_marginTop="10dp"
     	android:layout_marginLeft="10dp"
-    	android:layout_marginRight="10dp"
-    	androidPlot.title="A Simple XYPlot Example"/>
+    	android:layout_marginRight="15dp"
+    	androidPlot.title="Shares Graph"/>
 
 </LinearLayout>

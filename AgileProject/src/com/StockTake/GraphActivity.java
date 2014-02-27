@@ -5,6 +5,7 @@ import java.util.*;
 
 import org.json.JSONException;
 
+import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.PointLabelFormatter;
 import com.androidplot.xy.SimpleXYSeries;
@@ -97,9 +98,9 @@ public class GraphActivity extends Activity {
 
 		spinner2 = (Spinner) findViewById(R.id.time_spinner);
 		List<String> list2 = new ArrayList<String>();
-		list2.add("Yearly");
-		list2.add("Monthly");
 		list2.add("Weekly");
+		list2.add("Monthly");
+		list2.add("Yearly");
 
 		ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>
 		(this, android.R.layout.simple_spinner_item,list2);
@@ -134,11 +135,12 @@ public class GraphActivity extends Activity {
             	
             	String stockname;
             	String time;
+            	String stockAb ="";
  
-                Toast.makeText(GraphActivity.this,
+                /*Toast.makeText(GraphActivity.this,
                         "On Button Click : " + 
                         "\n" + String.valueOf(spinner1.getSelectedItem()) + "\n" + String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_LONG).show();*/
                 
                 		stockname = String.valueOf(spinner1.getSelectedItem());
                 		time = String.valueOf(spinner2.getSelectedItem());
@@ -146,30 +148,32 @@ public class GraphActivity extends Activity {
                 		if(stockname.equals("S&M"))
                 		{
                 			stockname = "SN";
+                			stockAb = "S&M";
                 		}
                 		else if (stockname.equals("Experian"))
                 		{
                 			stockname = "EXPN";
+                			stockAb = "Experian";
                 		}
                 		else if (stockname.equals("M&S"))
                 		{
                 			stockname = "MKS";
+                			stockAb = "M&S";
                 		}
                 		else if (stockname.equals("HSBC"))
                 		{
                 			stockname = "HSBA";
+                			stockAb = "HSBC";
                 		}
                 		else if (stockname.equals("BP"))
                 		{
                 			stockname = "BP";
+                			stockAb = "BP";
                 		}
                 		
-                		getData(stockname, time);
-                		
+                		getData(stockname, time, stockAb);             		
             }
- 
         });
- 
     }
 
 
@@ -186,25 +190,32 @@ public class GraphActivity extends Activity {
 
 	}
 
-	public void getData(String stockname, String time)
+	public void getData(String stockname, String time, String stockAb)
 	{
 		LinkedList<Float> HistoricList = new LinkedList<Float>();
 		FeedParser HistoricData = new FeedParser();
 		HistoricList = HistoricData.getHistoricFeed(stockname, time);
-
+		
+		int weekBoundMax = 7;
+		int monthBoundMax = 30;
+		int yearBoundMax = 12;
+		
 		for(int i = 0; i < HistoricList.size(); i++) {
 			Log.v("booyah", "4 : " + HistoricList.get(i));
 		}
 		
-		//LineGraph graphData = new LineGraph();
-		
 		Number[] array = HistoricList.toArray(new Number[HistoricList.size()]);
-		
-		//graphData.onDisplay(stateForGraph, array);
-		
+				
 		// initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
         plot.clear();
+        
+        //Set Graph Title according to selection
+        String graph_title = "" + time + " Graph for Stock: " + stockAb;
+        
+        plot.setTitle(graph_title);
+        plot.setDomainLabel("Time Period: " + time); //X-axis label
+        plot.setRangeLabel("Share Value"); //Y-axis label
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -212,25 +223,31 @@ public class GraphActivity extends Activity {
                 SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
                 "Series1");                             // Set the display title of the series
 
-        // Create a formatter to use for drawing a series using LineAndPointRenderer
-        // and configure it from xml:
-        //LineAndPointFormatter series1Format = new LineAndPointFormatter();
-        //series1Format.setPointLabelFormatter(new PointLabelFormatter());
-        //series1Format.configure(getApplicationContext(),
-               //R.xml.line_point_formatter_with_plf1);
-
         LineAndPointFormatter series1Format = new LineAndPointFormatter(
         		Color.rgb(0, 200, 0),
         		Color.rgb(0, 100, 0),
         		null,
-        		new PointLabelFormatter(Color.WHITE));
+        		null);
         
         // add a new series' to the xyplot:
         plot.addSeries(series1, series1Format);
 
-
-        // reduce the number of range labels
-        plot.setTicksPerRangeLabel(3);
+        //Domain = X-axis || Range = Y-axis
+        plot.setTicksPerRangeLabel(1);
+        plot.setTicksPerDomainLabel(1);
+        if(time.equals("Weekly"))
+        {
+        	plot.setDomainBoundaries(1, weekBoundMax, BoundaryMode.FIXED);
+        }
+        else if(time.equals("Monthly"))
+        {
+        	plot.setDomainBoundaries(1, monthBoundMax, BoundaryMode.FIXED);
+        }
+        else if(time.equals("Yearly"))
+        {
+        	plot.setDomainBoundaries(1, yearBoundMax, BoundaryMode.FIXED);
+        }
+        
         plot.getGraphWidget().setDomainLabelOrientation(-45);
         plot.redraw();
 
