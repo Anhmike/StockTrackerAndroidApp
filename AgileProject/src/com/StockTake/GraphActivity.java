@@ -204,6 +204,7 @@ public class GraphActivity extends Activity {
 		
 		// initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
+        plot.clear();
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
