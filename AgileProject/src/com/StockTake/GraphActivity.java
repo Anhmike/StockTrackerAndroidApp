@@ -187,11 +187,11 @@ public class GraphActivity extends Activity {
 			Log.v("booyah", "4 : " + HistoricList.get(i));
 		}
 		
-		//LineGraph graphData = new LineGraph();
+		LineGraph graphData = new LineGraph();
 		
-		//Number[] array = HistoricList.toArray(new Number[HistoricList.size()]);
+		Number[] array = HistoricList.toArray(new Number[HistoricList.size()]);
 		
-		//graphData.onCreate(stateForGraph, array);
+		graphData.onCreate(stateForGraph, array);
 	}
 
 

@@ -20,5 +20,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="20px"
         android:text="Generate Graph" />
+    
+   	<com.androidplot.xy.XYPlot
+   		android:id="@+id/mySimpleXYPlot"
+    	android:layout_width="fill_parent"
+    	android:layout_height="100px"
+    	android:layout_marginTop="10px"
+    	android:layout_marginLeft="10px"
+    	android:layout_marginRight="10px"
+    	androidPlot.title="A Simple XYPlot Example"/>
 
 </LinearLayout>

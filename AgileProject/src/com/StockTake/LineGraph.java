@@ -2,6 +2,7 @@ package com.StockTake;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
 import com.androidplot.xy.*;
@@ -26,7 +27,7 @@ public class LineGraph extends Activity
         setContentView(R.layout.graph);
 
         // initialize our XYPlot reference:
-        //plot = (XYPlot) findViewById(R.id.simplexyplot);
+        plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -36,13 +37,19 @@ public class LineGraph extends Activity
 
         // Create a formatter to use for drawing a series using LineAndPointRenderer
         // and configure it from xml:
-        LineAndPointFormatter series1Format = new LineAndPointFormatter();
-        series1Format.setPointLabelFormatter(new PointLabelFormatter());
+        //LineAndPointFormatter series1Format = new LineAndPointFormatter();
+        //series1Format.setPointLabelFormatter(new PointLabelFormatter());
         //series1Format.configure(getApplicationContext(),
-               // R.xml.line_point_formatter_with_plf1);
+               //R.xml.line_point_formatter_with_plf1);
 
+        LineAndPointFormatter series1Format = new LineAndPointFormatter(
+        		Color.rgb(0, 200, 0),
+        		Color.rgb(0, 100, 0),
+        		null,
+        		new PointLabelFormatter(Color.WHITE));
+        
         // add a new series' to the xyplot:
-        //plot.addSeries(series1, series1Format);
+        plot.addSeries(series1, series1Format);
 
 
         // reduce the number of range labels
