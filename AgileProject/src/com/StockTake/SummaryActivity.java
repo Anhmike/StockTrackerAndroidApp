@@ -53,8 +53,8 @@ public class SummaryActivity extends Activity
 		if (checkInternetConnection()) {
 			try {
 				
-				//onClick();
-				//myStockmanager.summaryTable(this);
+				onClick();
+				myStockmanager.summaryTable(this);
 				
 			} catch(Exception e) {
 				/* Parse Error */ 

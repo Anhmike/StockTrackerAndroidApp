@@ -1,5 +1,7 @@
 package com.StockTake;
 
+import java.util.LinkedList;
+
 public class Finance {
 
 	public String name; // Stock name

@@ -9,6 +9,7 @@ import java.nio.charset.Charset;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
+import android.util.Log;
 
 public class FeedParser
 {
@@ -20,17 +21,27 @@ public class FeedParser
 		
 		reader = null;
 		csvData = null;
-		
-		try
-		{
-			reader = getCsvRealtime(currentStock);
-			csvData = parseCsvRealtime(reader);
+		try{
+		reader = getCsvRealtime(currentStock);
+		csvData = parseCsvRealtime(reader);
+		} catch(IOException e){
+		 Log.e("error", e.toString());
 		}
-		catch (IOException e){}
-		
 		toPopulate.setLast((Float.parseFloat(csvData[1]) / 100f));
 		toPopulate.setName(currentStock);
 		toPopulate.setInstantVolume(Integer.parseInt(csvData[2]));
+
+		try{
+		reader = getCsvHistoric(currentStock, "Weekly");
+		csvData = parseHistoricVolume(reader);
+		}catch(Exception e)
+		{Log.v("error", e.toString());}
+		toPopulate.setClose((Float.parseFloat(csvData[0]) / 100f));
+		toPopulate.setVolume(Integer.parseInt(csvData[1]));
+		Log.v("close", csvData[0]);
+		Log.v("volume", csvData[1]);
+		
+		
 	}
 	
 	public LinkedList<Float> getHistoricFeed(String currentStock, String time)
@@ -88,6 +99,7 @@ public class FeedParser
 		}
 		catch (IOException e)
 		{
+			Log.e("error", e.toString());
 		}
 		try
 		{
@@ -95,6 +107,7 @@ public class FeedParser
 		}
 		catch (IOException e)
 		{
+			Log.e("error", e.toString());
 		}
 		
 		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));	
@@ -127,8 +140,39 @@ public class FeedParser
 		}
 		return historicList;
 	}
+
+	private String[] parseHistoricVolume(BufferedReader csvToParse) throws IOException  
+	{
+		String strLine = "";
+		StringTokenizer st = null;
+		int lineNumber = 0, tokenNumber = 0;
+		String[] csvData = new String[2];
+		while( ((strLine = csvToParse.readLine()) != null))
+		{
+			lineNumber++;
+			if (lineNumber == 2) {
+
+				st = new StringTokenizer(strLine, ",");
+				String token;
+				
+				while(st.hasMoreTokens())
+				{
+					tokenNumber++;
+					token = st.nextToken();
+					if (tokenNumber == 5) {
+						csvData[0] = token;
+					}
+					if (tokenNumber == 6) {
+						csvData[1] = token;
+					}
+				}
+				tokenNumber = 0;
+			}
+		}
+		return csvData;
+	}
 	
-	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException
+ 	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException
 	{
 		// Generate URL
 		URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s=" + stockSymbol + ".L&f=nb2b3va");
