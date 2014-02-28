@@ -32,22 +32,14 @@ public class AgileProjectActivity extends TabActivity {
 	    tabHost.addTab(spec);
 	    
 	 // Create an Intent to launch an Activity for the tab (to be reused)
-	    intent = new Intent().setClass(this, VolumeActivity.class);
+	    intent = new Intent().setClass(this, AlertsActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("Trade Volume").setIndicator("Trade Volume",
-	                      res.getDrawable(R.drawable.ic_tab_volume))
-	                  .setContent(intent);
-	    tabHost.addTab(spec);
-	    
-		 // Create an Intent to launch an Activity for the tab (to be reused)
-	    intent = new Intent().setClass(this, RocketActivity.class);
-
-	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("Alerts").setIndicator("Alerts",
+	    spec = tabHost.newTabSpec("Alerts!").setIndicator("Alerts!",
 	                      res.getDrawable(R.drawable.ic_tab_alerts))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
+	    
 	    
 		 // Create an Intent to launch an Activity for the tab (to be reused)
 	    intent = new Intent().setClass(this, GraphActivity.class);
@@ -55,6 +47,15 @@ public class AgileProjectActivity extends TabActivity {
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("Graphs").setIndicator("Graphs",
 	                      res.getDrawable(R.drawable.ic_tab_graph))
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
+	    
+	    // Create an Intent to launch an Activity for the tab (to be reused)
+	    intent = new Intent().setClass(this, AlertSettingsActivity.class);
+
+	    // Initialize a TabSpec for each tab and add it to the TabHost
+	    spec = tabHost.newTabSpec("Settings").setIndicator("Settings",
+	                      res.getDrawable(R.drawable.ic_tab_settings))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 

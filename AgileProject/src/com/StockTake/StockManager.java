@@ -267,17 +267,47 @@ public class StockManager extends Application
 			rowRun[stockCounter] = new TableRow(contextActivity);
 			runStock[stockCounter] = new TextView(contextActivity);
 			runLabel[stockCounter] = new TextView(contextActivity);
+			runStock[stockCounter].setText(stockNamesLong.get(stockObj.getName().toString()));
+			runStock[stockCounter].setTextSize(26f);
+			runStock[stockCounter].setHeight(130);
+			runStock[stockCounter].setGravity(Gravity.CENTER_VERTICAL);
+			runLabel[stockCounter].setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+			runLabel[stockCounter].setTextSize(26f);
+			runLabel[stockCounter].setHeight(130);
+			runLabel[stockCounter].setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
-			if (stockObj.isRun())
+			if (stockObj.isRun() && !stockObj.isPlummet() && !stockObj.isRocket())
 			{
-				runStock[stockCounter].setText(stockNamesLong.get(stockObj.getName().toString()));
-				runStock[stockCounter].setTextSize(20f);
-				runStock[stockCounter].setHeight(100);
-				runStock[stockCounter].setGravity(Gravity.CENTER_VERTICAL);
-				runLabel[stockCounter].setText("Run");
-				runLabel[stockCounter].setTextSize(20f);
-				runLabel[stockCounter].setHeight(100);
-				runLabel[stockCounter].setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+				
+				runLabel[stockCounter].setText(Html.fromHtml("<font color=\"#CCCC33\">Run</font>"));
+				rowRun[stockCounter].addView(runStock[stockCounter]);
+				rowRun[stockCounter].addView(runLabel[stockCounter]);
+				runs++;
+			}
+			else if(stockObj.isRun() && stockObj.isPlummet())
+			{
+				runLabel[stockCounter].setText(Html.fromHtml("<font color=\"#CCCC33\">Run</font> & <font color='red'>Plummet</font>"));
+				rowRun[stockCounter].addView(runStock[stockCounter]);
+				rowRun[stockCounter].addView(runLabel[stockCounter]);
+				runs++;
+			}
+			else if(stockObj.isRun() && stockObj.isRocket())
+			{
+				runLabel[stockCounter].setText(Html.fromHtml("<font color=\"#CCCC33\">Run</font> & <font color='green'>Rocket</font>"));
+				rowRun[stockCounter].addView(runStock[stockCounter]);
+				rowRun[stockCounter].addView(runLabel[stockCounter]);
+				runs++;
+			}
+			else if(!stockObj.isRun() && stockObj.isPlummet())
+			{
+				runLabel[stockCounter].setText(Html.fromHtml("<font color='red'>Plummet</font>"));
+				rowRun[stockCounter].addView(runStock[stockCounter]);
+				rowRun[stockCounter].addView(runLabel[stockCounter]);
+				runs++;
+			}
+			else if(!stockObj.isRun() && stockObj.isRocket())
+			{
+				runLabel[stockCounter].setText(Html.fromHtml("<font color='green'>Rocket</font>"));
 				rowRun[stockCounter].addView(runStock[stockCounter]);
 				rowRun[stockCounter].addView(runLabel[stockCounter]);
 				runs++;

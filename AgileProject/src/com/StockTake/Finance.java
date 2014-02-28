@@ -2,6 +2,8 @@ package com.StockTake;
 
 import java.util.LinkedList;
 
+import android.util.Log;
+
 public class Finance {
 
 	public String name; // Stock name
@@ -14,9 +16,9 @@ public class Finance {
 	public boolean is_rocket;
 	public boolean is_plummet;
 
-	public final float RUN_CONST = 1.1f;
+	public final float RUN_CONST = 0.1f;
 	public final float ROCKET_CONST = 1.1f;
-	public final float PLUMMET_CONST = 0.8f;
+	public final float PLUMMET_CONST = 1.5f;
 
 	public Finance() {
 		name = "Default";
@@ -96,6 +98,8 @@ public class Finance {
 				is_run = false;
 			}
 		}
+		
+		Log.v(getName(), String.valueOf(isRun()));
 	}
 
 	public void calcRocketPlummet() {
