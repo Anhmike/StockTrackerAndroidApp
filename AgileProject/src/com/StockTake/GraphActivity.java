@@ -2,6 +2,9 @@ package com.StockTake;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
 import java.util.*;
 
 import org.json.JSONException;
@@ -41,6 +44,18 @@ public class GraphActivity extends Activity {
 	Bundle stateForGraph;
 	private XYPlot plot;
 
+	private final int weekBoundMax = 5;
+	private final int monthBoundMax = 20;
+	private final int yearBoundMax = 365;
+	
+	String[] week_vals = {"Mon", "Tues", "Wed", "Thur", "Fri"};
+	String[] month_vals = {""};
+	String[] year_vals = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
+	
+	Number[] yValues = {};
+	Number[] xValues = {0, 1, 2, 3, 4, 5};
+
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -117,10 +132,8 @@ public class GraphActivity extends Activity {
 		
 	}
 	
-
     
-    //get the selected dropdown list value
-    
+    //get the selected dropdown list value  
     public void addListenerOnButton() {
     	
 
@@ -138,12 +151,7 @@ public class GraphActivity extends Activity {
             	String stockname;
             	String time;
             	String stockAb ="";
- 
-                /*Toast.makeText(GraphActivity.this,
-                        "On Button Click : " + 
-                        "\n" + String.valueOf(spinner1.getSelectedItem()) + "\n" + String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_LONG).show();*/
-                
+              
                 		stockname = String.valueOf(spinner1.getSelectedItem());
                 		time = String.valueOf(spinner2.getSelectedItem());
                 		
@@ -173,12 +181,10 @@ public class GraphActivity extends Activity {
                 			stockAb = "BP";
                 		}
                 		
-                		getData(stockname, time, stockAb);
-                		
+                		getData(stockname, time, stockAb);                		
             }
- 
         });
- 
+
     }
 
 
@@ -199,15 +205,7 @@ public class GraphActivity extends Activity {
 	{
 		LinkedList<Float> HistoricList = new LinkedList<Float>();
 		FeedParser HistoricData = new FeedParser();
-		HistoricList = HistoricData.getHistoricFeed(stockname, time);
-		
-		int weekBoundMax = 5;
-		int monthBoundMax = 20;
-		int yearBoundMax = 365;
-		
-		String[] week_vals = {"Mon", "Tues", "Wed", "Thur", "Fri"};
-		String[] month_vals = {""};
-		String[] year_vals = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
+		HistoricList = HistoricData.getHistoricFeed(stockname, time);		
 		
 		for(int i = 0; i < HistoricList.size(); i++) {
 			Log.v("booyah", "4 : " + HistoricList.get(i));
@@ -229,22 +227,15 @@ public class GraphActivity extends Activity {
         plot.setDomainValueFormat(new DecimalFormat("0"));
         plot.setRangeValueFormat(new DecimalFormat("0"));
         
+        
         // Turn the above arrays into XYSeries':
-        XYSeries series1 = new SimpleXYSeries(
-                Arrays.asList(array),          // SimpleXYSeries takes a List so turn our array into a List
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
-                "Series1");                             // Set the display title of the series
+        XYSeries series1 = new SimpleXYSeries(Arrays.asList(xValues), Arrays.asList(array), "Series1");                             
 
-        LineAndPointFormatter series1Format = new LineAndPointFormatter(
-        		Color.rgb(0, 200, 0),
-        		Color.rgb(0, 100, 0),
-        		null,
-        		null);
+        LineAndPointFormatter series1Format = new LineAndPointFormatter(Color.rgb(0, 200, 0), Color.rgb(0, 100, 0), null, null);
         
         // add a new series' to the xyplot:
         plot.addSeries(series1, series1Format);
-
-
+        
         //Domain = X-axis || Range = Y-axis
         plot.setTicksPerRangeLabel(1);
         plot.setTicksPerDomainLabel(1);
@@ -266,13 +257,36 @@ public class GraphActivity extends Activity {
         	//set domain labels as string [x-axis]
         	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         }
-
-        
+     
         plot.getGraphWidget().setDomainLabelOrientation(-45);
-        
+        //set domain labels as string [x-axis]
         plot.redraw();
+        
+        //Changes x-axis labels - Doesnt work properly
+        //plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
 
 	}
 
+	@SuppressWarnings("serial")
+	//This class is for changing the x-axis values to string format
+	class GraphXLabelFormat extends Format { //http://stackoverflow.com/questions/10770220/androidplot-setting-the-labels-on-the-x-axis
+
+	    @Override
+	    public StringBuffer format(Object arg0, StringBuffer arg1, FieldPosition arg2) {
+	        // TODO Auto-generated method stub
+
+	        int parsedInt = Math.round(Float.parseFloat(arg0.toString()));
+	        Log.d("test", parsedInt + " " + arg1 + " " + arg2);
+	        String labelString = week_vals[parsedInt];
+	        arg1.append(labelString);
+	        return arg1;
+	    }
+
+	    @Override
+	    public Object parseObject(String arg0, ParsePosition arg1) {
+	        // TODO Auto-generated method stub
+	        return java.util.Arrays.asList(week_vals).indexOf(arg0);
+	    }
+	}
 
 }
