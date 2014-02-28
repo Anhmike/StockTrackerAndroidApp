@@ -61,7 +61,7 @@ public class FeedParser
 		
 		if(timeFrame.equals("Weekly"))
 		{
-			 day = cal.get(Calendar.DAY_OF_MONTH) - 7;
+			 day = cal.get(Calendar.DAY_OF_MONTH) - 8;
 			 month = cal.get(Calendar.MONTH);
 			 year = cal.get(Calendar.YEAR);
 			

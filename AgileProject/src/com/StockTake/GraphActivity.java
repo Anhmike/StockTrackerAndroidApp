@@ -1,6 +1,7 @@
 package com.StockTake;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import org.json.JSONException;
@@ -200,9 +201,13 @@ public class GraphActivity extends Activity {
 		FeedParser HistoricData = new FeedParser();
 		HistoricList = HistoricData.getHistoricFeed(stockname, time);
 		
-		int weekBoundMax = 7;
-		int monthBoundMax = 30;
-		int yearBoundMax = 12;
+		int weekBoundMax = 5;
+		int monthBoundMax = 20;
+		int yearBoundMax = 365;
+		
+		String[] week_vals = {"Mon", "Tues", "Wed", "Thur", "Fri"};
+		String[] month_vals = {""};
+		String[] year_vals = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 		
 		for(int i = 0; i < HistoricList.size(); i++) {
 			Log.v("booyah", "4 : " + HistoricList.get(i));
@@ -220,9 +225,9 @@ public class GraphActivity extends Activity {
         plot.setTitle(graph_title);
         plot.setDomainLabel("Time Period: " + time); //X-axis label
         plot.setRangeLabel("Share Value"); //Y-axis label
-        plot.canScrollHorizontally(1);
         plot.getLegendWidget().setVisible(false);
-        //plot.getGraphWidget().getDomainLabelPaint().setTextSize(20);
+        plot.setDomainValueFormat(new DecimalFormat("0"));
+        plot.setRangeValueFormat(new DecimalFormat("0"));
         
         // Turn the above arrays into XYSeries':
         XYSeries series1 = new SimpleXYSeries(
@@ -243,21 +248,28 @@ public class GraphActivity extends Activity {
         //Domain = X-axis || Range = Y-axis
         plot.setTicksPerRangeLabel(1);
         plot.setTicksPerDomainLabel(1);
-        /*if(time.equals("Weekly"))
+        if(time.equals("Weekly"))
         {
         	plot.setDomainBoundaries(1, weekBoundMax, BoundaryMode.FIXED);
+        	//set domain labels as string [x-axis]
+        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         }
         else if(time.equals("Monthly"))
         {
         	plot.setDomainBoundaries(1, monthBoundMax, BoundaryMode.FIXED);
+        	//set domain labels as string [x-axis]
+        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         }
         else if(time.equals("Yearly"))
         {
         	plot.setDomainBoundaries(1, yearBoundMax, BoundaryMode.FIXED);
-        }*/
-       // plot.setDomainBoundaries(1, ,BoundaryMode.Fixed);
+        	//set domain labels as string [x-axis]
+        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
+        }
+
         
         plot.getGraphWidget().setDomainLabelOrientation(-45);
+        
         plot.redraw();
 
 	}
