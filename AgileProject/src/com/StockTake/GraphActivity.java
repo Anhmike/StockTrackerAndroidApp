@@ -221,6 +221,7 @@ public class GraphActivity extends Activity {
         plot.setDomainLabel("Time Period: " + time); //X-axis label
         plot.setRangeLabel("Share Value"); //Y-axis label
         plot.canScrollHorizontally(1);
+        plot.getLegendWidget().setVisible(false);
         //plot.getGraphWidget().getDomainLabelPaint().setTextSize(20);
         
         // Turn the above arrays into XYSeries':
@@ -242,7 +243,7 @@ public class GraphActivity extends Activity {
         //Domain = X-axis || Range = Y-axis
         plot.setTicksPerRangeLabel(1);
         plot.setTicksPerDomainLabel(1);
-        if(time.equals("Weekly"))
+        /*if(time.equals("Weekly"))
         {
         	plot.setDomainBoundaries(1, weekBoundMax, BoundaryMode.FIXED);
         }
@@ -253,7 +254,8 @@ public class GraphActivity extends Activity {
         else if(time.equals("Yearly"))
         {
         	plot.setDomainBoundaries(1, yearBoundMax, BoundaryMode.FIXED);
-        }
+        }*/
+       // plot.setDomainBoundaries(1, ,BoundaryMode.Fixed);
         
         plot.getGraphWidget().setDomainLabelOrientation(-45);
         plot.redraw();
