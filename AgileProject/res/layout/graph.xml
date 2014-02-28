@@ -18,18 +18,17 @@
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="20px"
-        android:text="Generate Graph" />
+        android:text="@string/generate_graph" />
     
    	<com.androidplot.xy.XYPlot
    		android:id="@+id/mySimpleXYPlot"
     	android:layout_width="fill_parent"
     	android:layout_height="300dp"
     	android:layout_marginTop="20dp"
-    	android:layout_marginLeft="15dp"
+    	android:layout_marginLeft="18dp"
     	android:layout_marginRight="15dp"
     	androidPlot.title="Shares Graph"
-   		androidPlot.titleWidget.labelPaint.textSize="25dp"
+   		androidPlot.titleWidget.labelPaint.textSize="18dp"
    		androidPlot.domainLabelWidget.labelPaint.textSize="20dp"
    		androidPlot.rangeLabelWidget.labelPaint.textSize="20dp"
    		

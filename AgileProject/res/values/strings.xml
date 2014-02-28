@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">AgileProject</string>
+    <string name="generate_graph">Generate Graph</string>
 
 </resources>
 
