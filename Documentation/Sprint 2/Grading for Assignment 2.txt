@@ -1,0 +1,32 @@
+source control
+- appropriate use.
+- updating regularly
+- everyone using it
+
+acceptance tests
+- clear and able to demostrate them at the sprint review.
+- keep asking raleigh about it
+
+unit tests
+- the code
+- outline of tests
+
+refactoring
+- quality of software
+- how the code has been improved.
+
+
+
+1. Maintain the sprint backlog.
+2. Develop unit tests for your code.
+3. Write your code to make the tests pass and refactor your code.
+4. Keep all tests and code under source control.
+5. Sprint Review with Raleigh 
+6. Video the second sprint retrospective.
+
+Note: 
+- print-outs of the tests and code, annotating these by hand to demostrate refactoring.
+- evidence that you implemented the actions from sprint 1 retrospective.
+
+
+Due: Friday 7th March at 16:00
