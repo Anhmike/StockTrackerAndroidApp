@@ -43,6 +43,16 @@ public class StockManager extends Application
 	{
 		myState = s;
 	}
+	
+	public HashMap<Finance, Float> getPortfolio()
+	{
+		return portfolio;
+	}
+	
+	public void setPortfolio(HashMap<Finance, Float> portfolio)
+	{
+		this.portfolio = portfolio;
+	}
 
 	public void clearPortfolio()
 	{
