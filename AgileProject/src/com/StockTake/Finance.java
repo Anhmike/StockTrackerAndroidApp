@@ -14,15 +14,44 @@ public class Finance {
 	public boolean is_rocket;
 	public boolean is_plummet;
 
-	public final float RUN_CONST = 0.1f;
-	public final float ROCKET_CONST = 1.1f;
-	public final float PLUMMET_CONST = 0.8f;
+	public float RUN_CONST = 1.1f;
+	public float ROCKET_CONST = 1.1f;
+	public float PLUMMET_CONST = 0.8f;
 
 	public Finance() {
 		name = "Default";
 		last = 0;
 	}
+	
+	public float getRunValue()
+	{
+		return RUN_CONST;
+	}
+	
+	public float getRocketValue()
+	{
+		return ROCKET_CONST;
+	}
+	public float getPlummetValue()
+	{
+		return PLUMMET_CONST;
+	}
+	
+	public void setRunValue(float run)
+	{
+		RUN_CONST = run;
+	}
+	
+	public void setRocketValue(float rocket)
+	{
+		ROCKET_CONST = rocket;
+	}
 
+	public void setPlummetValue(float plummet)
+	{
+		PLUMMET_CONST = plummet;
+	}
+	
 	public void setLast(float newLast) {
 		last = newLast;
 	}
