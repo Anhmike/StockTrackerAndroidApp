@@ -1,5 +1,53 @@
 MEETINGS WITH RALEIGH
 (this should be used as a reference for the meeting we have had with Raleigh)
+(recent meeting is at the top)
+
+-----------------------------------------------------------------------------------------------------------
+
+Date: 05/03/2014 Time: 11:00
+Agenda: Sprint Review (Acceptance Tests & General Feedback
+Notes:
+
+-----------------------------------------------------------------------------------------------------------
+
+Date: 20/02/2014  Time: 11:30
+Agenda: Discuss the product backlog comfirm sprint 2
+Notes:
+	- value/time graph (see picture)
+	- two buttons (drop down) choice of share/time scale (weeks/months/years)
+
+-----------------------------------------------------------------------------------------------------------
+
+Date: 12/02/2014  Time: 10:00
+Agenda: Sprint Review - (Acceptance Tests & General Feedback)
+Notes: 
+	- abbreviation of names, such as Marks and Spencer to M&S to allow for bigger text.
+	- the need of bigger font.
+	- she liked the color of the name of shares, however the total value should be in color and
+	  much bigger than rest of the content on show.
+	- one acceptance test failed - due to inaccuracy of shares. We believe this was due to previous
+	  acceptance tests from another user story not being fulfilled meaning the calculation of the 
+          	  shares was not entirely accurate. Therefore this user story will be brought forward to the
+	  2nd sprint.
+
+-----------------------------------------------------------------------------------------------------------
+
+Date: 05/02/2014 Time: 10:15
+Agenda: Discuss the progress of sprint 1.
+Notes:
+	- she liked how the progress was going and we agreed we would start on another story that was not
+	  in the sprint backlog as all stories that we agreed had been completed.
+	- she wanted the size of the text to be larger and to abbreviate some of name to allow for this.
+	- she also asked for some color to be added to name of the shares so that they would stand out.
+
+-----------------------------------------------------------------------------------------------------------
+
+Date: 28/01/2014 Time: 13:00
+Agenda: Comfirm project and acceptance tests.
+Notes:
+	- the sprint backlog was comfirmed.
+	- acceptance test were discussed in details and updated as of the discussion.
+
 -----------------------------------------------------------------------------------------------------------
 
 Date: 24/01/2014  Time: 15:30
@@ -17,48 +65,4 @@ Notes:
 
 -----------------------------------------------------------------------------------------------------------
 
-Date: 28/01/2014 Time: 13:00
-Agenda: Comfirm project and acceptance tests.
-Notes:
-	- the sprint backlog was comfirmed.
-	- acceptance test were discussed in details and updated as of the discussion.
 
------------------------------------------------------------------------------------------------------------
-
-Date: 05/02/2014 Time: 10:15
-Agenda: Discuss the progress of sprint 1.
-Notes:
-	- she liked how the progress was going and we agreed we would start on another story that was not
-	  in the sprint backlog as all stories that we agreed had been completed.
-	- she wanted the size of the text to be larger and to abbreviate some of name to allow for this.
-	- she also asked for some color to be added to name of the shares so that they would stand out.
-
------------------------------------------------------------------------------------------------------------
-
-Date: 12/02/2014  Time: 10:00
-Agenda: Sprint Review - (Acceptance Tests & General Feedback)
-Notes: 
-	- abbreviation of names, such as Marks and Spencer to M&S to allow for bigger text.
-	- the need of bigger font.
-	- she liked the color of the name of shares, however the total value should be in color and
-	  much bigger than rest of the content on show.
-	- one acceptance test failed - due to inaccuracy of shares. We believe this was due to previous
-	  acceptance tests from another user story not being fulfilled meaning the calculation of the 
-          shares was not entirely accurate. Therefore this user story will be brought forward to the
-	  2nd sprint.
-
------------------------------------------------------------------------------------------------------------
-
-Date: 20/02/2014  Time: 11:30
-Agenda: Discuss the product backlog comfirm sprint 2
-Notes:
-	- value/time graph
-	- two buttons (drop down) choice of share/time scale (weeks/months/years)
-
------------------------------------------------------------------------------------------------------------
-
-Date tbc Time: 05/02/2014 Time: 11:00
-Agenda: Sprint Review (Acceptance Tests & General Feedback
-Notes:
-
------------------------------------------------------------------------------------------------------------
