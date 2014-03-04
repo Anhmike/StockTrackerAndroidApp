@@ -64,8 +64,7 @@ public class StockManager extends Application {
 
 	}
 
-	public boolean addPortfolioEntry(String stockCode, String stockNameLong,
-			int numberOfShares) throws IOException {
+	public boolean addPortfolioEntry(String stockCode, String stockNameLong, int numberOfShares) throws IOException {
 
 		float shareQuantity = (float) numberOfShares;
 		Finance stockObj = createFinanceObject(stockCode);
@@ -90,14 +89,10 @@ public class StockManager extends Application {
 		return value;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void summaryTable(Activity contextActivity) {
 
-		TableLayout table = (TableLayout) contextActivity
-				.findViewById(R.id.tableLayout1); // Find
-													// TableLayout
-													// defined
-													// in
-													// main.xml
+		TableLayout table = (TableLayout) contextActivity.findViewById(R.id.tableLayout1); // Find TableLayout defined in xml
 
 		table.setStretchAllColumns(true);
 		table.setShrinkAllColumns(true);
@@ -126,7 +121,7 @@ public class StockManager extends Application {
 			for (Finance thisObj : portfolio.keySet()) {
 				if (thisObj.getName().equals(currStockName)) {
 					stockObj = thisObj;
-					break; // fail fast
+					break; 
 				}
 			}
 
@@ -159,21 +154,6 @@ public class StockManager extends Application {
 			stockName[stockCounter].setGravity(Gravity.LEFT
 					| Gravity.CENTER_VERTICAL);
 
-			/*
-			 * stockShares[stockCounter].setText(String.format("%,3.0f",
-			 * portfolio.get(stockObj)));
-			 * stockShares[stockCounter].setGravity(Gravity.RIGHT |
-			 * Gravity.CENTER_VERTICAL);
-			 * stockShares[stockCounter].setTextSize(20f);
-			 * stockShares[stockCounter].setSingleLine(true);
-			 * 
-			 * stockValue[stockCounter].setText("£" + String.format("%.2f",
-			 * thisStockValue));
-			 * stockValue[stockCounter].setGravity(Gravity.RIGHT |
-			 * Gravity.CENTER_VERTICAL);
-			 * stockValue[stockCounter].setTextSize(20f);
-			 * stockValue[stockCounter].setSingleLine(true);
-			 */
 
 			stockTotal[stockCounter].setText("£  "
 					+ String.format("%,3.0f", subTotal));
