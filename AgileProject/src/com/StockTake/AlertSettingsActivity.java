@@ -91,13 +91,26 @@ public class AlertSettingsActivity extends Activity {
 	
 	
 	public void setAlertValues(String seekBar, int progress)
-	{
-		if(seekBar == "run")
-			myStockmanager.setRunValue((progress/100));
-		else if(seekBar == "rocket")
-			myStockmanager.setRocketValue((progress/100));
-		else if(seekBar == "plummet")
-			myStockmanager.setPlummetValue((progress/100));
+	{	
+		float prog = progress;
+		if(seekBar == "run"){
+			TextView runBar = (TextView)findViewById(R.id.runBarValue);
+			runBar.setText((progress) + " %");
+			myStockmanager.setRunValue((prog/100));
+			Log.e("run", Float.toString(prog/100));
+		}
+		else if(seekBar == "rocket"){
+			TextView rocketBar = (TextView)findViewById(R.id.rocketBarValue);
+			rocketBar.setText((progress) + " %");
+			myStockmanager.setRocketValue((prog/100));
+			Log.e("rocket", Float.toString(prog/100));
+		}
+		else if(seekBar == "plummet"){
+			TextView plummetBar = (TextView)findViewById(R.id.plummetBarValue);
+			plummetBar.setText((progress) + " %");
+			myStockmanager.setPlummetValue((prog/100));
+			Log.e("plummet", Float.toString(prog/100));
+		}
 		
 		myStockmanager.updateRuns();
 	}

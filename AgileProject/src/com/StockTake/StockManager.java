@@ -28,9 +28,9 @@ public class StockManager extends Application {
 	List<String> stockNames = new ArrayList<String>();
 	FeedParser newParse = new FeedParser();
 
-	public float RUN_CONST = 1.1f;
+	public float RUN_CONST = 1.2f;
 	public float ROCKET_CONST = 1.2f;
-	public float PLUMMET_CONST = 0.8f;
+	public float PLUMMET_CONST = 0.1f;
 	
 	public float getRunValue()
 	{

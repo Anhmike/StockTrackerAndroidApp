@@ -94,8 +94,6 @@ public class Finance {
 				is_run = false;
 			}
 		}
-		
-		Log.v(getName(), String.valueOf(isRun()));
 	}
 
 	public void calcRocketPlummet(float ROCKET_CONST, float PLUMMET_CONST) {
