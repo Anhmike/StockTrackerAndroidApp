@@ -28,6 +28,39 @@ public class StockManager extends Application {
 	List<String> stockNames = new ArrayList<String>();
 	FeedParser newParse = new FeedParser();
 
+	public float RUN_CONST = 1.1f;
+	public float ROCKET_CONST = 1.2f;
+	public float PLUMMET_CONST = 0.8f;
+	
+	public float getRunValue()
+	{
+		return RUN_CONST;
+	}
+	
+	public float getRocketValue()
+	{
+		return ROCKET_CONST;
+	}
+	public float getPlummetValue()
+	{
+		return PLUMMET_CONST;
+	}
+	
+	public void setRunValue(float run)
+	{
+		RUN_CONST = run;
+	}
+	
+	public void setRocketValue(float rocket)
+	{
+		ROCKET_CONST = rocket;
+	}
+
+	public void setPlummetValue(float plummet)
+	{
+		PLUMMET_CONST = plummet;
+	}
+
 	private String myState;
 
 	public String getState() {
@@ -36,14 +69,6 @@ public class StockManager extends Application {
 
 	public void setState(String s) {
 		myState = s;
-	}
-
-	public HashMap<Finance, Float> getPortfolio() {
-		return portfolio;
-	}
-
-	public void setPortfolio(HashMap<Finance, Float> portfolio) {
-		this.portfolio = portfolio;
 	}
 
 	public void clearPortfolio() {
@@ -57,8 +82,8 @@ public class StockManager extends Application {
 		Finance newStock = new Finance();
 
 		newParse.getFeed(newStock, stockCode);
-		newStock.calcRun();
-		newStock.calcRocketPlummet();
+		newStock.calcRun(RUN_CONST);
+		newStock.calcRocketPlummet(ROCKET_CONST, PLUMMET_CONST);
 
 		return newStock;
 
@@ -210,6 +235,8 @@ public class StockManager extends Application {
 	}
 
 	public int volumeTable(Activity contextActivity) {
+		
+		updateRuns();
 
 		TableLayout table = (TableLayout) contextActivity
 				.findViewById(R.id.tableLayout2); // Find
@@ -300,6 +327,19 @@ public class StockManager extends Application {
 
 		return runs;
 
+	}
+	
+	public void updateRuns()
+	{
+		Iterator iterate = portfolio.entrySet().iterator();
+		while(iterate.hasNext())
+		{
+			Map.Entry<Finance, Float> entry = (Map.Entry<Finance, Float>)iterate.next();
+			Finance stock = entry.getKey();
+			
+			stock.calcRun(RUN_CONST);
+			stock.calcRocketPlummet(ROCKET_CONST, PLUMMET_CONST);
+		}
 	}
 
 	public int rocketTable(Activity contextActivity) {
