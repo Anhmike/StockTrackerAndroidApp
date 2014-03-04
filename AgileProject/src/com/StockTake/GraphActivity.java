@@ -44,15 +44,15 @@ public class GraphActivity extends Activity {
 	Bundle stateForGraph;
 	private XYPlot plot;
 
-	private final int weekBoundMax = 5;
-	private final int monthBoundMax = 20;
-	private final int yearBoundMax = 365;
+	private final int weekBoundMax = 5; //Each trading day in a week
+	private final int monthBoundMax = 12; //???
+	private final int yearBoundMax = 365; //every single plot in a year 
 	
 	String[] week_vals = {"Mon", "Tues", "Wed", "Thur", "Fri"};
-	String[] month_vals = {""};
+	String[] month_vals = {"Week 1", "Week 2", "Week 3", "Week 4", "Week5"};
 	String[] year_vals = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 	
-	Number[] yValues = {};
+	Number[] yValues = {0, 10, 20, 30, 40, 50};
 	Number[] xValues = {0, 1, 2, 3, 4, 5};
 
 	
@@ -69,7 +69,6 @@ public class GraphActivity extends Activity {
 	}
 
 	private void update(){
-
 
 		if (checkInternetConnection()) {
 			try {
@@ -135,9 +134,7 @@ public class GraphActivity extends Activity {
     
     //get the selected dropdown list value  
     public void addListenerOnButton() {
-    	
 
- 
         spinner1 = (Spinner) findViewById(R.id.stock_spinner);
         spinner2 = (Spinner) findViewById(R.id.time_spinner);
          
@@ -229,7 +226,10 @@ public class GraphActivity extends Activity {
         
         
         // Turn the above arrays into XYSeries':
-        XYSeries series1 = new SimpleXYSeries(Arrays.asList(xValues), Arrays.asList(array), "Series1");                             
+        XYSeries series1 = new SimpleXYSeries(Arrays.asList(xValues), Arrays.asList(yValues), "Series1"); //X and Y must be same size
+        for(int i=0; i<array.length-1; i++){
+        	System.out.println("Array value: " + array[i]); //Just seeing what the values are
+        }
 
         LineAndPointFormatter series1Format = new LineAndPointFormatter(Color.rgb(0, 200, 0), Color.rgb(0, 100, 0), null, null);
         
@@ -262,9 +262,8 @@ public class GraphActivity extends Activity {
         //set domain labels as string [x-axis]
         plot.redraw();
         
-        //Changes x-axis labels - Doesnt work properly
-        //plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
-
+        //Changes x-axis labels - Doesnt work properly++++++++++++++++++++++++++++++++++++++++++++++++++++
+        plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
 	}
 
 	@SuppressWarnings("serial")
