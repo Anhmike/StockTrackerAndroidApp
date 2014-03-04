@@ -1,7 +1,5 @@
 package com.StockTake;
 
-import java.util.LinkedList;
-
 import android.util.Log;
 
 public class Finance {
