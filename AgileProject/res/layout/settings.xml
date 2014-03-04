@@ -10,7 +10,88 @@
         android:id="@+id/tableRow1"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
+          <TextView
+            android:id="@+id/summaryNameHeader"
+            android:layout_height="wrap_content"
+            android:text="Run Value"
+            android:textStyle="bold" 
+            android:textSize="24sp" >
+        </TextView>
+        </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+       <SeekBar
+            android:id="@+id/RunBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="26dp" 
+            android:layout_marginBottom="26dp"            
+            android:max="100" >
+        </SeekBar>
 
     </TableRow>
- 
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+          <TextView
+            android:id="@+id/summaryNameHeader"
+            android:layout_height="wrap_content"
+            android:text="Rocket Value"
+            android:textStyle="bold" 
+            android:textSize="24sp" >
+        </TextView>
+        </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+       <SeekBar
+            android:id="@+id/RocketBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="26dp"            
+            android:max="100" >
+        </SeekBar>
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+          <TextView
+            android:id="@+id/summaryNameHeader"
+            android:layout_height="wrap_content"
+            android:text="Plummet Value"
+            android:textStyle="bold" 
+            android:textSize="24sp" >
+        </TextView>
+        </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+       <SeekBar
+            android:id="@+id/PlummetBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="26dp"             
+            android:max="100" >
+        </SeekBar>
+
+    </TableRow>
+    
 </TableLayout>

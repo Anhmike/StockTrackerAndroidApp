@@ -16,7 +16,7 @@ public class Finance {
 
 	public final float RUN_CONST = 0.1f;
 	public final float ROCKET_CONST = 1.1f;
-	public final float PLUMMET_CONST = 1.5f;
+	public final float PLUMMET_CONST = 0.8f;
 
 	public Finance() {
 		name = "Default";
