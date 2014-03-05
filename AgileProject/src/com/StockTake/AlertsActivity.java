@@ -5,7 +5,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -13,10 +12,7 @@ import android.widget.TextView;
 public class AlertsActivity extends Activity {
 
 	/** Called when the activity is first created. */
-
 	StockManager myStockmanager;
-
-	// ((MyApplication) context.getApplicationContext())
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,40 +30,31 @@ public class AlertsActivity extends Activity {
 		TableRow.LayoutParams params = new TableRow.LayoutParams();
 		params.span = 4;
 
-		/* Init refresh button */
-		// Button button = (Button) findViewById(R.id.btnRefresh);
-		// button.setOnClickListener(this);
-
 		if (checkInternetConnection()) {
 			try {
-
 				int runs = myStockmanager.volumeTable(this);
 				if (runs == 0) {
 
-					error1.setText(Html
-							.fromHtml(" <big>No Alerts</big><br/><br/>There are no runs, rockets or plummets on any of your share portfolio for the past trading day."));
+					error1.setText(Html.fromHtml(" <big>No Alerts</big><br/><br/>There are no runs, rockets or plummets on any of your share portfolio for the past trading day."));
 					errorRow.addView(error1, params);
 					table.addView(errorRow);
 				}
 
 			} catch (Exception e) {
 				/* Parse Error */
-				error1.setText(Html
-						.fromHtml(" <big>Oops!</big><br/><br/> Something went wrong when we tried to retrieve your share portfolio.<br/><br/> Please try again later."));
+				error1.setText(Html.fromHtml(" <big>Oops!</big><br/><br/> Something went wrong when we tried to retrieve your share portfolio.<br/><br/> Please try again later."));
 				errorRow.addView(error1, params);
 				table.addView(errorRow);
 			}
 
 		} else {
 			/* No Internet Connection */
-			error1.setText(Html
-					.fromHtml(" <big>Oops!</big><br/><br/> It seems there is a problem with your internet connection."));
+			error1.setText(Html.fromHtml(" <big>Oops!</big><br/><br/> It seems there is a problem with your internet connection."));
 			errorRow.addView(error1, params);
 			table.addView(errorRow);
 		}
-
 	}
-	
+
 	private boolean checkInternetConnection() {
 
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -80,7 +67,5 @@ public class AlertsActivity extends Activity {
 		} else {
 			return false;
 		}
-
 	}
-
 }

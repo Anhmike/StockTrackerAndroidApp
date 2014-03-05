@@ -1,28 +1,16 @@
 package com.StockTake;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import android.app.Activity;
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 public class AlertSettingsActivity extends Activity {
 
 	/** Called when the activity is first created. */
-
 	StockManager myStockmanager;
-
-	// ((MyApplication) context.getApplicationContext())
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,12 +55,9 @@ public class AlertSettingsActivity extends Activity {
 			@Override
 	        public void onStartTrackingTouch(SeekBar seekBar) {}
 	        @Override
-	        public void onStopTrackingTouch(SeekBar seekBar) {}
-			
+	        public void onStopTrackingTouch(SeekBar seekBar) {}			
 		});
-		setSliders();
-
-		
+		setSliders();		
 	}
 	
 	public void setSliders()
@@ -87,9 +72,7 @@ public class AlertSettingsActivity extends Activity {
 		SeekBar plummetBar = (SeekBar)findViewById(R.id.PlummetBar);
 		plummetBar.setProgress(plummetVal);
 	}
-	
-	
-	
+		
 	public void setAlertValues(String seekBar, int progress)
 	{	
 		float prog = progress;
@@ -110,8 +93,7 @@ public class AlertSettingsActivity extends Activity {
 			plummetBar.setText((progress) + " %");
 			myStockmanager.setPlummetValue((prog/100));
 			Log.e("plummet", Float.toString(prog/100));
-		}
-		
+		}		
 		myStockmanager.updateRuns();
 	}
 }

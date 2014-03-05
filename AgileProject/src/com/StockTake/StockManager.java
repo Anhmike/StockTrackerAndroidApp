@@ -214,6 +214,7 @@ public class StockManager extends Application {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	public NavigableMap sortPortfolioByValue() {
 		TreeMap<Float, String> portfolioValue = new TreeMap<Float, String>();
 		Finance currentStock = new Finance();
@@ -329,6 +330,7 @@ public class StockManager extends Application {
 
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateRuns()
 	{
 		Iterator iterate = portfolio.entrySet().iterator();

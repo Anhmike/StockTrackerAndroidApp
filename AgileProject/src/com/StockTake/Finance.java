@@ -1,6 +1,5 @@
 package com.StockTake;
 
-import android.util.Log;
 
 public class Finance {
 
