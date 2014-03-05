@@ -24,7 +24,7 @@ public class FeedParser {
 			csvData = parseCsvRealtime(reader);
 		} catch (IOException e) {
 		}
-		toPopulate.setLast((Float.parseFloat(csvData[1]) / 100f));
+		toPopulate.setLast((Float.parseFloat(csvData[1]))/100f);
 		toPopulate.setName(currentStock);
 		toPopulate.setInstantVolume(Integer.parseInt(csvData[2]));
 

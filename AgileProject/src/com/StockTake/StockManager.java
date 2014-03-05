@@ -162,8 +162,8 @@ public class StockManager extends Application {
 			BigDecimal stockValueRounded = new BigDecimal(
 					Double.toString(thisStockValue));
 			stockValueRounded = stockValueRounded.setScale(0,
-					BigDecimal.ROUND_HALF_UP);
-			float subTotal = portfolio.get(stockObj) * thisStockValue;
+					BigDecimal.ROUND_UP);
+			float subTotal = (portfolio.get(stockObj) * thisStockValue);
 
 			// String longName =
 			// stockNamesLong.get(stockObj.getName().toString());

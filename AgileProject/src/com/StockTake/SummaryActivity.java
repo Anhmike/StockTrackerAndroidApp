@@ -74,7 +74,7 @@ public class SummaryActivity extends Activity
 	public void onClick() throws IOException, JSONException {
 	
 		myStockmanager.clearPortfolio();
-		myStockmanager.addPortfolioEntry("SN", "S&M", 1219);
+		myStockmanager.addPortfolioEntry("SN", "S&N", 1219);
 		myStockmanager.addPortfolioEntry("BP", "BP", 192);
 		myStockmanager.addPortfolioEntry("HSBA", "HSBC", 343);
 		myStockmanager.addPortfolioEntry("EXPN", "Experian", 258);
