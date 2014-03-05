@@ -92,23 +92,27 @@ public class GraphActivity extends Activity {
 				String stockname = String.valueOf(spinner_stocks.getSelectedItem());;
 				String time = String.valueOf(spinner_time.getSelectedItem());;
 				String stockAb = "";
-
-				if (stockname.equals("S&N")) {
-					stockAb = "SN";
-				} else if (stockname.equals("Experian")) {
-					stockAb = "EXPN";
-				} else if (stockname.equals("M&S")) {
-					stockAb = "MKS";
-				} else if (stockname.equals("HSBC")) {
-					stockAb = "HSBA";
-				} else if (stockname.equals("BP")) {
-					stockAb = "BP";
-				}
+				stockAb = getStockName(stockname, stockAb);
 				getGraphData(stockAb, time, stockname);
 			}
 		});
     }
 
+    public String getStockName(String stockname, String stockAb) {
+    	if (stockname.equals("S&N")) {
+			stockAb = "SN";
+		} else if (stockname.equals("Experian")) {
+			stockAb = "EXPN";
+		} else if (stockname.equals("M&S")) {
+			stockAb = "MKS";
+		} else if (stockname.equals("HSBC")) {
+			stockAb = "HSBA";
+		} else if (stockname.equals("BP")) {
+			stockAb = "BP";
+		}
+    	return stockAb;
+    }
+    
 	private boolean checkInternetConnection() {
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (conMgr.getActiveNetworkInfo() != null && conMgr.getActiveNetworkInfo().isAvailable() && conMgr.getActiveNetworkInfo().isConnected()) {
