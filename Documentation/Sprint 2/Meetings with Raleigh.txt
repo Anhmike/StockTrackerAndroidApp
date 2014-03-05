@@ -1,12 +1,23 @@
 MEETINGS WITH RALEIGH
 (this should be used as a reference for the meeting we have had with Raleigh)
-(recent meeting is at the top)
+(most recent meeting is at the top)
 
 -----------------------------------------------------------------------------------------------------------
 
 Date: 05/03/2014 Time: 11:00
-Agenda: Sprint Review (Acceptance Tests & General Feedback
-Notes:
+Agenda: Sprint Review (Acceptance Tests & General Feedback)
+Notes: 
+	- This was a very successful review and we managed to pass both user story acceptance tests.
+	- She was impressed that we had also completed the last two user stories which were not included
+     	  in sprint 2. The accepetance tests for both of these were also passed.
+     	- However, Raleigh did have some useful comments about the app which are as follows:
+      	- She suggested that for sprint 3 we create a new user story which would allow us to improve the format
+      	  of the graph.
+      	- The x-axis domain for the yearly graph should be reduced.
+      	- Typo mistake: S&M should be S&N on the graph tab.
+      	- X-axis Label: Share Value (£).
+      	- Graph Title: Stock (Working Days).
+      	- Raleign suggested we should meet on Monday to discuss Sprint 3.
 
 -----------------------------------------------------------------------------------------------------------
 
@@ -27,7 +38,7 @@ Notes:
 	  much bigger than rest of the content on show.
 	- one acceptance test failed - due to inaccuracy of shares. We believe this was due to previous
 	  acceptance tests from another user story not being fulfilled meaning the calculation of the 
-          	  shares was not entirely accurate. Therefore this user story will be brought forward to the
+          shares was not entirely accurate. Therefore this user story will be brought forward to the
 	  2nd sprint.
 
 -----------------------------------------------------------------------------------------------------------
