@@ -37,6 +37,7 @@ public class GraphActivity extends Activity {
 		// Get the StockManager
 		myStockmanager = ((StockManager)getApplicationContext());
 		setContentView(R.layout.graph);
+		System.out.println("mark");
 		update(); 
 	}
 
@@ -55,7 +56,7 @@ public class GraphActivity extends Activity {
 
 	private void populateSpinners() throws IOException, JSONException {
 		spinner_stocks = (Spinner) findViewById(R.id.stock_spinner);
-		final String[] stockArray = {"S&M","Experian","M&S","HSBC","BP"};
+		final String[] stockArray = {"S&N","Experian","M&S","HSBC","BP"};
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
 		(this, android.R.layout.simple_spinner_item,stockArray);
