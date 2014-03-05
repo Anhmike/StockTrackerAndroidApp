@@ -30,3 +30,9 @@ Note:
 
 
 Due: Friday 7th March at 16:00
+
+In all cases, please try your best to provide evidence of the quality assurance you have applied. 
+- what has your team agreed and applied with respect to source control with GitHub this time around;
+- does attendance and participation of team members contribute to quality; 
+- have you applied pair programming; 
+- what other aspects of scrum/agile methods have you learned about and applied in this sprint.
