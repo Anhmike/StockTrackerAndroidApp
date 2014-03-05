@@ -92,7 +92,7 @@ public class GraphActivity extends Activity {
 				String time = String.valueOf(spinner_time.getSelectedItem());;
 				String stockAb = "";
 
-				if (stockname.equals("S&M")) {
+				if (stockname.equals("S&N")) {
 					stockAb = "SN";
 				} else if (stockname.equals("Experian")) {
 					stockAb = "EXPN";
