@@ -19,7 +19,7 @@ public class FeedParser {
 
 		reader = null;
 		try {
-			reader = getCsvRealtime(currentStock);
+			reader = getCsvHistoric(currentStock, "current");
 			csvData = parseCsvRealtime(reader);
 		} catch (IOException e) {
 		}
@@ -55,25 +55,31 @@ public class FeedParser {
 
 		Calendar cal = Calendar.getInstance();
 		int day = 0, month = 0, year = 0;
+		
+		day = cal.get(Calendar.DAY_OF_MONTH);
+		month = cal.get(Calendar.MONTH);
+		year = cal.get(Calendar.YEAR);
 
 		if (timeFrame.equals("Weekly")) {
 			day = cal.get(Calendar.DAY_OF_MONTH) - 8;
-			month = cal.get(Calendar.MONTH);
-			year = cal.get(Calendar.YEAR);
 		} else if (timeFrame.equals("Monthly")) {
-			day = cal.get(Calendar.DAY_OF_MONTH);
 			month = cal.get(Calendar.MONTH) - 1;
-			year = cal.get(Calendar.YEAR);
 		} else if (timeFrame.equals("Yearly")) {
-			day = cal.get(Calendar.DAY_OF_MONTH);
-			month = cal.get(Calendar.MONTH);
 			year = cal.get(Calendar.YEAR) - 1;
+		}else if (timeFrame.equals("current"))
+		{
+			try{
+				URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ stockSymbol + ".L&f=nb2b3va");
+				InputStream is = feedUrl.openStream();
+				catch(IOException e)
+				{
+					Log.e("error", e.toString());
+				}
+				return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 		}
 
 		try {
-			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s="
-					+ stockSymbol + ".L&a=" + month + "&b=" + day + "&c="
-					+ year);
+			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s="+ stockSymbol + ".L&a=" + month + "&b=" + day + "&c="+ year);
 			is = feedUrl.openStream();
 		} catch (IOException e) {
 			Log.e("error", e.toString());
@@ -82,14 +88,6 @@ public class FeedParser {
 		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	}
 
-	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException {
-		// Generate URL
-		URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ stockSymbol + ".L&f=nb2b3va");
-
-		InputStream is = feedUrl.openStream();
-
-		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-	}
 	
 	private LinkedList<Float> parseCsvHistoric(BufferedReader csvToParse)
 			throws IOException {

@@ -132,10 +132,6 @@ public class GraphActivity extends Activity {
 		int monthBoundMax = 20;
 		int yearBoundMax = 365;
 
-		//String[] week_vals = {"Mon", "Tues", "Wed", "Thur", "Fri"};
-		//String[] month_vals = {""};
-		//String[] year_vals = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
-
 		Number[] array = HistoricList.toArray(new Number[HistoricList.size()]);
 
 		// initialize our XYPlot reference:
@@ -158,18 +154,12 @@ public class GraphActivity extends Activity {
         
         if(time.equals("Weekly")) {
         	plot.setDomainBoundaries(1, weekBoundMax, BoundaryMode.FIXED);
-        	//set domain labels as string [x-axis]
-        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         }
         else if(time.equals("Monthly")) {
         	plot.setDomainBoundaries(1, monthBoundMax, BoundaryMode.FIXED);
-        	//set domain labels as string [x-axis]
-        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         }
         else if(time.equals("Yearly")) {
         	plot.setDomainBoundaries(1, yearBoundMax, BoundaryMode.FIXED);
-        	//set domain labels as string [x-axis]
-        	//plot.getGraphWidget().setDomainValueFormat(new GraphXLabelFormat());
         } 
         plot.getGraphWidget().setDomainLabelOrientation(-45);
         plot.redraw();
