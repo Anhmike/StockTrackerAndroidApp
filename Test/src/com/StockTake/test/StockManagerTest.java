@@ -32,30 +32,30 @@ public class StockManagerTest extends AndroidTestCase {
 		Assert.assertEquals("Stock Manager State Test", stockManager.getState());
 	}	
 
-	public void testAddPortfolioEntry() throws IOException, JSONException {
+	public void testAddPortfolioEntry() throws IOException {
 		stockManager.clearPortfolio();
 		Assert.assertTrue("Output = true", stockManager.addPortfolioEntry("SN", "S&N", 1219));
 	}
 	
-	public void testGetPortfolioTotal() throws IOException, JSONException {
+	public void testGetPortfolioTotal() throws IOException {
 		Assert.assertTrue(stockManager.addPortfolioEntry("SN", "S&N", 1219));
 		Assert.assertTrue(stockManager.getPortfolioTotal() != 0f);
 	}
 
-	public void testClearPortfolio() throws IOException, JSONException {
+	public void testClearPortfolio() throws IOException {
 		Assert.assertTrue(stockManager.addPortfolioEntry("SN", "S&N", 1219));
 		stockManager.clearPortfolio();
 		Assert.assertTrue(stockManager.getPortfolioTotal() == 0f);
 	}
 
-	public void testCreateFinanceObject() throws IOException, JSONException {
+	public void testCreateFinanceObject() throws IOException {
 		Finance finance;
 		finance = stockManager.createFinanceObject("SN");
 		Assert.assertNotNull(finance);
 		Assert.assertEquals("SN", finance.getName());
 	}
 	
-	public void testSortPortfolioByValue() throws IOException, JSONException {
+	public void testSortPortfolioByValue() throws IOException {
 		Assert.assertTrue(stockManager.addPortfolioEntry("MKS", "M&S", 485));
 		Assert.assertTrue(stockManager.addPortfolioEntry("BP", "BP", 192));
 		Assert.assertTrue(stockManager.addPortfolioEntry("SN", "S&N", 1219));
