@@ -1,5 +1,7 @@
 package com.StockTake.test;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import android.test.AndroidTestCase;
@@ -13,13 +15,12 @@ public class FinanceTest extends AndroidTestCase{
 	@Test
 	public void testCalcRun() {
 		 newFinance.calcRun(1.2f);
-		 String temp = String.valueOf(newFinance.isRun());
-		 Log.v("mate", temp);
-		
-		
+		 Assert.assertEquals("Output = false", false, newFinance.isRun());
 	}
 
 	public void testCalcRocketPlummet() {
-		
+		newFinance.calcRocketPlummet(0.5f, 0.1f);
+		Assert.assertEquals("Output = false", false, newFinance.isRocket());
+		Assert.assertEquals("Output = false", false, newFinance.isPlummet());
 	}
 }
