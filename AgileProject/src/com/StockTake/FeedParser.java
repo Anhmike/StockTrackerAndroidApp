@@ -21,7 +21,7 @@ public class FeedParser {
 		try {
 			reader = getCsvHistoric(currentStock, "current");
 			csvData = parseCsvRealtime(reader);
-		} catch (IOException e) {
+		} catch (Exception e) {
 		}
 		toPopulate.setLast((Float.parseFloat(csvData[1]))/100f);
 		toPopulate.setName(currentStock);
@@ -69,13 +69,14 @@ public class FeedParser {
 		}else if (timeFrame.equals("current"))
 		{
 			try{
-				URL feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ stockSymbol + ".L&f=nb2b3va");
-				InputStream is = feedUrl.openStream();
-				catch(IOException e)
-				{
-					Log.e("error", e.toString());
-				}
-				return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+				feedUrl = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ stockSymbol + ".L&f=nb2b3va");
+				is = feedUrl.openStream();
+			}
+			catch(IOException e)
+			{
+				Log.e("error", e.toString());
+			}
+			return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 		}
 
 		try {
