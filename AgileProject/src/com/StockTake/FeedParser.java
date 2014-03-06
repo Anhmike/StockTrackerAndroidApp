@@ -18,7 +18,6 @@ public class FeedParser {
 		String csvData[] = null;
 
 		reader = null;
-		csvData = null;
 		try {
 			reader = getCsvRealtime(currentStock);
 			csvData = parseCsvRealtime(reader);
@@ -75,16 +74,12 @@ public class FeedParser {
 			feedUrl = new URL("http://ichart.yahoo.com/table.csv?s="
 					+ stockSymbol + ".L&a=" + month + "&b=" + day + "&c="
 					+ year);
-		} catch (IOException e) {
-		}
-		try {
 			is = feedUrl.openStream();
 		} catch (IOException e) {
 			Log.e("error", e.toString());
 		}
 
-		return new BufferedReader(new InputStreamReader(is,
-				Charset.forName("UTF-8")));
+		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	}
 
 	public BufferedReader getCsvRealtime(String stockSymbol) throws IOException {
@@ -93,8 +88,7 @@ public class FeedParser {
 
 		InputStream is = feedUrl.openStream();
 
-		return new BufferedReader(new InputStreamReader(is,
-				Charset.forName("UTF-8")));
+		return new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	}
 	
 	private LinkedList<Float> parseCsvHistoric(BufferedReader csvToParse)
