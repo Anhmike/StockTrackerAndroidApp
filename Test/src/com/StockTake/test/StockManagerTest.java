@@ -65,7 +65,7 @@ public class StockManagerTest extends AndroidTestCase {
 		Assert.assertTrue(stockManager.getPortfolioTotal() == 0f);
 	}
 
-	public void testCreateFinanceObject() throws IOException, JSONException {
+	public void testCreateFinanceObject() throws IOException {
 		finance = stockManager.createFinanceObject("SN");
 		Assert.assertNotNull(finance);
 		Assert.assertEquals("SN", finance.getName());
