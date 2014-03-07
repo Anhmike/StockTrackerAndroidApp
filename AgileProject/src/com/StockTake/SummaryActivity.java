@@ -72,20 +72,16 @@ public class SummaryActivity extends Activity
 
 	/* Click Refresh */
 	public void onClick() throws IOException, JSONException {
-	
 		myStockmanager.clearPortfolio();
 		myStockmanager.addPortfolioEntry("SN", "S&N", 1219);
 		myStockmanager.addPortfolioEntry("BP", "BP", 192);
 		myStockmanager.addPortfolioEntry("HSBA", "HSBC", 343);
 		myStockmanager.addPortfolioEntry("EXPN", "Experian", 258);
-		myStockmanager.addPortfolioEntry("MKS", "M&S", 485);
-		
+		myStockmanager.addPortfolioEntry("MKS", "M&S", 485);	
 	}
 	
 	private boolean checkInternetConnection() {
-	
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-	
 		// ARE WE CONNECTED TO THE INTERNET
 		if (conMgr.getActiveNetworkInfo() != null && conMgr.getActiveNetworkInfo().isAvailable() && conMgr.getActiveNetworkInfo().isConnected()) {
 			return true;

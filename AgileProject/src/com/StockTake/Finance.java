@@ -2,7 +2,6 @@ package com.StockTake;
 
 
 public class Finance {
-
 	public String name; // Stock name
 	public float last = 0; // Last stock value
 	public String market; // Market
@@ -17,8 +16,6 @@ public class Finance {
 		name = "Default";
 		last = 0;
 	}
-	
-	
 	
 	public void setLast(float newLast) {
 		last = newLast;
@@ -109,5 +106,4 @@ public class Finance {
 		}
 
 	}
-
 }
