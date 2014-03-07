@@ -93,7 +93,6 @@ public class Finance {
 	}
 
 	public void calcRocketPlummet(float ROCKET_CONST, float PLUMMET_CONST) {
-
 		is_plummet = false;
 		is_rocket = false;
 		if (last != 0 && close != 0) {
