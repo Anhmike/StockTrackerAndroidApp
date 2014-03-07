@@ -1,0 +1,86 @@
+Tests
+
+Provide a way of selecting a share name and time frame (i.e weekly, monthly, yearly) and the correct data is collected from the yahoo finance website.
+Test1: test that drop down menus are created for the options the users need to get the data they want.
+	public void testSpinners(){
+		GraphActivity newSpinners = new GraphActivity();
+		newSpinners.test();
+	}
+Test2: test the right url is created and returns the data expected is returned as a csv.
+	public void testCollectDataSNWeekly()
+	{
+		String StockName = "SN";
+		String Time = "Weekly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+	public void testCollectDataSNMonthly()
+	{
+		String StockName = "SN";
+		String Time = "Monthly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+
+	public void testCollectDataSNYearly()
+	{
+		String StockName = "SN";
+		String Time = "Yearly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+	public void testCollectDataBPWeekly()
+	{
+		String StockName = "BP";
+		String Time = "Weekly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+
+
+	public void testCollectDataBPMonthly()
+	{
+		String StockName = "BP";
+		String Time = "Monthly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+	public void testCollectDataBPYearly()
+	{
+		String StockName = "BP";
+		String Time = "Yearly";
+		FeedParser getdata = new FeedParser();
+		LinkedList<Float> HistoricList = new LinkedList<Float>();
+		HistoricList = getdata.getHistoricFeed(StockName, Time);
+		Number[] array = HistoricList.toArray(new Number				[HistoricList.size()]);
+	}
+Create a graph that displays the data that has been collected from a list of values in order by time.
+Test1: test that a graph can be created given a number array
+	public void testGraph(){
+		Number [] test;
+		test = {0, 8, 8, 4, 5, 6, 7, 3, 2};
+		createGraph newGraph = new createGraph();
+		newGraph.drawGraph(test);
+	}
+
+Test2: test that a graph can be created from the number array of data collected from the yahoo finance website
+	public void testFinanceGraph(){
+		String stockname = "LN";
+		String time = "weekly";
+		LinkedList<Float> HisotricList = new LinkedList<Float>();
+		FeedParser HistoricData = new FeedParser();
+		HistoricList = HistoricData.getHistoricFeed(stockname,time);
+		Number [] test =HistoricList.toArray(new Number[HistoricList.size()]);
+		createGraph newGraph = new createGraph();
+		newGraph.drawGraph(test);
+	}
