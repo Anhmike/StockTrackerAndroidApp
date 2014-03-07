@@ -2,15 +2,15 @@ USER STORIES,COMPLEXITIES & ACCEPTANCE TESTS
 
 --------------------------------------------------------------------------------
 
-User Story: As a shareholder, I want to be able to view my shares by overall value, so that I can easily see where shares rank.
+User Story: As a shareholder, the share values must be accurate within a pound.
 
 Complexity: 1 / Value: 600 / Priority: 600
 
 Acceptance Tests:
-- Verify that the shares are sorted by overall value meaning the highest value will be at the top of the list.
 - Verify that the values are correct in regards to the yahoo finance website.
+- Verify that the values are accurate to within a pound.
 
-NOTE: included into the first sprint.
+NOTE: included into the first sprint. Failed acceptance test due to inaccurate share values.
 
 --------------------------------------------------------------------------------
 
