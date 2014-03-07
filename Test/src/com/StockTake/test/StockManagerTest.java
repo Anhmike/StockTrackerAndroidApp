@@ -3,14 +3,31 @@ package com.StockTake.test;
 import java.io.IOException;
 import java.util.NavigableMap;
 import junit.framework.Assert;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
 import org.json.JSONException;
 import android.test.AndroidTestCase;
 import android.util.Log;
+
+import com.StockTake.FeedParser;
 import com.StockTake.Finance;
 import com.StockTake.StockManager;
 
 public class StockManagerTest extends AndroidTestCase {
-	StockManager stockManager = new StockManager();
+	StockManager stockManager;
+	Finance finance;
+	
+	protected void setUp()
+	{
+		stockManager = new StockManager();
+		finance = new Finance();
+	}
+
+	public static Test suite()
+	{
+		return new TestSuite(StockManagerTest.class);
+	}
 	
 	public void testGetRunValue() {
 		Assert.assertNotNull("Output != null", stockManager.getRunValue());
@@ -49,7 +66,6 @@ public class StockManagerTest extends AndroidTestCase {
 	}
 
 	public void testCreateFinanceObject() throws IOException, JSONException {
-		Finance finance;
 		finance = stockManager.createFinanceObject("SN");
 		Assert.assertNotNull(finance);
 		Assert.assertEquals("SN", finance.getName());

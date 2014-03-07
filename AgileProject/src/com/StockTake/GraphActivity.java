@@ -89,16 +89,16 @@ public class GraphActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				String stockname = String.valueOf(spinner_stocks.getSelectedItem());;
-				String time = String.valueOf(spinner_time.getSelectedItem());;
-				String stockAb = "";
-				stockAb = getStockName(stockname, stockAb);
+				String stockname = String.valueOf(spinner_stocks.getSelectedItem());
+				String time = String.valueOf(spinner_time.getSelectedItem());
+				String stockAb = getStockName(stockname);
 				getGraphData(stockAb, time, stockname);
 			}
 		});
     }
 
-    public String getStockName(String stockname, String stockAb) {
+    public String getStockName(String stockname) {
+    	String stockAb = null;
     	if (stockname.equals("S&N")) {
 			stockAb = "SN";
 		} else if (stockname.equals("Experian")) {
