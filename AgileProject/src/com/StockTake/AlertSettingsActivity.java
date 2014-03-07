@@ -80,19 +80,16 @@ public class AlertSettingsActivity extends Activity {
 			TextView runBar = (TextView)findViewById(R.id.runBarValue);
 			runBar.setText((progress) + " %");
 			myStockmanager.setRunValue((prog/100));
-			Log.e("run", Float.toString(prog/100));
 		}
 		else if(seekBar == "rocket"){
 			TextView rocketBar = (TextView)findViewById(R.id.rocketBarValue);
 			rocketBar.setText((progress) + " %");
 			myStockmanager.setRocketValue((prog/100));
-			Log.e("rocket", Float.toString(prog/100));
 		}
 		else if(seekBar == "plummet"){
 			TextView plummetBar = (TextView)findViewById(R.id.plummetBarValue);
 			plummetBar.setText((progress) + " %");
 			myStockmanager.setPlummetValue((prog/100));
-			Log.e("plummet", Float.toString(prog/100));
 		}		
 		myStockmanager.updateRuns();
 	}
