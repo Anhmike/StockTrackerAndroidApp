@@ -1,0 +1,22 @@
+Test setting sliders to correct values
+Test 1: Check slider get correct values
+
+public void testGetSliderValues()
+{
+	StockManager sm = new StockManager();
+	
+	int runVal = sm.getRunValue();
+	int rocketVal = sm.getRocketValue();
+	int plummetVal = sm.getPlummetValue();
+	
+}
+
+public void testSetAlertValues()
+{
+	StockManager sm = new StockManager();
+	
+	sm.setRunValue(100f);
+	sm.setRocketValue(100f);
+	sm.setPlummetValue(100f);
+	
+}
